@@ -1,6 +1,7 @@
 package com.jcozy.trolly.ui.questdetail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,12 +27,13 @@ class ExplanationFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_explanation, container, false)
 
-//        val extra = arguments
-//        title = extra!!.getString("title").toString()
-//        how_to = (extra!!.getString("how_to")).toString()
-//
-//        tv_intro1.text = title
-//        tv_explaination.text = how_to
+        val extra = arguments
+        title = extra!!.getString("title").toString()
+        Log.d("title", title)
+        how_to = (extra!!.getString("how_to")).toString()
+
+        tv_intro1.text = title
+        tv_explaination.text = how_to
 
     }
 

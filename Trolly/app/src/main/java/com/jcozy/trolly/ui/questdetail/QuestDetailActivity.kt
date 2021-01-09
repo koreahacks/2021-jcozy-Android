@@ -43,6 +43,7 @@ class QuestDetailActivity : AppCompatActivity() {
     lateinit var QuestDetailData : QuestDetailData
     lateinit var title : String
     lateinit var explaination : String
+    val bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,10 +62,9 @@ class QuestDetailActivity : AppCompatActivity() {
         sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
         editor = sharedPref.edit()
         initView()
-//        Log.d("밖",title)
-        val bundle = Bundle()
-        //bundle.putString("title", title)
-        //bundle.putString("how_to", explaination)
+
+        bundle.putString("title", title)
+        bundle.putString("how_to", explaination)
         ExplanationFragment().arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.tab_viewpager, ExplanationFragment()).commit()
 
@@ -128,16 +128,18 @@ class QuestDetailActivity : AppCompatActivity() {
             }
             customDialog.start()
         }
-
+        Log.d("밖", title)
     }
 
-    fun initView(){
+    private fun initView(){
         val header = mutableMapOf<String, String>()
         header["Content-Type"] = "application/json"
         val token = sharedPref.getString("token","token").toString()
+        header["TOKEN"] = token
         service.requestQuestDetail(header,"5ff931e1a1c0110964b74d7c").customEnqueue(
             onError = { Toast.makeText(this, "올바르지 않은 요청입니다.", Toast.LENGTH_SHORT) },
             onSuccess = {
+                Log.d("뭔데",it.message)
                 tv_title.text = it.data.title
                 tv_way.text = it.data.how_to
                 Glide.with(this).load(it.data.image).into(iv_main)
@@ -146,7 +148,7 @@ class QuestDetailActivity : AppCompatActivity() {
                 Log.d("안",title)
             }
         )
-
+        Log.d("안2",title)
     }
 
     @Throws(IOException::class)
