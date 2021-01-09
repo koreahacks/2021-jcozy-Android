@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.jcozy.trolly.R
 import com.jcozy.trolly.network.responseData.RankingData
+import kotlinx.android.synthetic.main.activity_mypage.*
 import kotlinx.android.synthetic.main.activity_mypage_ranking.*
 
 
@@ -16,6 +17,13 @@ class MypageRankingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage_ranking)
+
+        setSupportActionBar(tb_mypage_ranking)
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_mypage_before)
 
         rankingAdapter = MypageRankingAdapter(this)
         rc_ranking.adapter = rankingAdapter
