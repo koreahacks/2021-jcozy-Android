@@ -1,5 +1,6 @@
 package com.jcozy.trolly.ui.main
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     val service = RequestToServer.service
     lateinit var sharedPref: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
 
 
     val data = mutableListOf<MainTimeAttackData>()
@@ -48,6 +50,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this, TimeAttackActivity::class.java)
             startActivity(intent)
         }
+        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
+        editor = sharedPref.edit()
+        editor.putString("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmZhMDgxNzU0YWM3ZjRkM2NmMzgwNjEiLCJpYXQiOjE2MTAyMjE1OTIsImlzcyI6Im91ci1zb3B0In0.1PgxkZCH3e0rj72v_rq9hr2cuCqOV-xff3HCn9AcdRY")
+        editor.apply()
+        editor.commit()
 
         main_time_rc.adapter = mainTimeAttackAdapter
         main_time_rc.offscreenPageLimit = 4
