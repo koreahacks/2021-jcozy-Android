@@ -1,6 +1,7 @@
 package com.jcozy.trolly.network
 
 import com.bumptech.glide.annotation.GlideExtension
+import com.jcozy.trolly.network.responseData.ResponseAdData
 import com.jcozy.trolly.network.responseData.ResponseMainMainData
 import com.jcozy.trolly.network.responseData.ResponseMainSubData
 import com.jcozy.trolly.network.responseData.ResponseMainTimeAttackData
@@ -20,6 +21,9 @@ interface RequestInterface{
     //서브 퀘스트 보여주기
     @GET("/quest/sub")
     fun requestSubQuest(@HeaderMap headers: Map<String, String?>): Call<ResponseMainSubData>
+    //광고 퀘스트 보여주기
+    @GET("/quest/ad")
+    fun requestAd(@HeaderMap headers: Map<String, String?>): Call<ResponseAdData>
     //퀘스트 실시간 인증
     // @GET("/quest/detail/time/{questIdx}")
     //fun requestTimeReview(@HeaderMap headers: Map<String, String?>,  @Path("questIdx") questIdx: Int): Call<>
