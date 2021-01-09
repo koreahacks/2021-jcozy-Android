@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
         ic_mypage.setOnClickListener(this)
+        layout_adv.setOnClickListener(this)
 
         mainTimeAttackAdapter = MainTimeAttackAdapter(this){ MainTimeAttackData, View ->
             val intent = Intent(this, TimeAttackActivity::class.java)
@@ -210,6 +211,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (p0?.id) {
             R.id.ic_mypage -> {
                 val intent = Intent(applicationContext, MypageActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.layout_adv -> {
+                val intent = Intent(applicationContext, QuestDetailActivity::class.java)
                 startActivity(intent)
             }
         }
