@@ -17,6 +17,7 @@
         />
 
     <TextView
+        android:id="@+id/tv_ranking_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/spoqahansansneo_light"
@@ -39,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="22dp"/>
+        android:layout_marginEnd="12dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

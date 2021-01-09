@@ -11,7 +11,7 @@ import com.jcozy.trolly.network.responseData.RankingData
 class MypageRankingViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     var profile : ImageView = itemView.findViewById(R.id.iv_mypage_ranking_profile)
-    var name : TextView = itemView.findViewById(R.id.tv_mypage_ranking_name)
+    var name : TextView = itemView.findViewById(R.id.tv_ranking_username)
     var ranking : TextView = itemView.findViewById(R.id.tv_ranking)
 
     fun bind(myData : RankingData){

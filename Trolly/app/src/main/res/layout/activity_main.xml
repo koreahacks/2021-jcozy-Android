@@ -35,6 +35,7 @@
             android:paddingHorizontal="8dp"
             android:paddingVertical="16dp"
             android:src="@drawable/icon_search"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ic_stamp"
             app:layout_constraintTop_toTopOf="parent"/>

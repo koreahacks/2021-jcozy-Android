@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.jcozy.trolly.ItemDecoration
 import com.jcozy.trolly.R
 import com.jcozy.trolly.StampDialog
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var mainTimeAttackAdapter : MainTimeAttackAdapter
     lateinit var mainmainAdapter : MainMainAdapter
     lateinit var mainSubAdapter : MainSubAdapter
+    lateinit var viewPager : ViewPager
+
 
     val data = mutableListOf<MainTimeAttackData>()
     val mainData = mutableListOf<MainMainData>()
