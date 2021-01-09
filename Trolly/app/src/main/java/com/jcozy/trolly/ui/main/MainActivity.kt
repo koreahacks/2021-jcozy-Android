@@ -8,12 +8,9 @@ import com.jcozy.trolly.ItemDecoration
 import com.jcozy.trolly.R
 import com.jcozy.trolly.StampDialog
 import com.jcozy.trolly.mypage.MypageActivity
-import com.jcozy.trolly.ui.main.MainMainAdapter
-import com.jcozy.trolly.ui.main.MainSubAdapter
 import com.jcozy.trolly.network.responseData.MainMainData
 import com.jcozy.trolly.network.responseData.MainSubData
 import com.jcozy.trolly.network.responseData.MainTimeAttackData
-import com.jcozy.trolly.ui.main.MainTimeAttackAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 
