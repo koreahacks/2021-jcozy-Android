@@ -143,32 +143,15 @@ class QuestDetailActivity : AppCompatActivity() {
                 IMAGE_FROM_CAMERA -> {
                     val bitmap = data?.extras?.get("data")
                     Glide.with(this).load(selectedImg).into(iv_main)
-
                 }
                 IMAGE_FROM_GALLERY -> {
                     selectedImg = data!!.data!!
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, selectedImg)
-                    Glide.with(this).load(bitmap).into(iv_main)
                     Log.d("링크", selectedImg.toString())
-//                    val c = this.contentResolver.query(Uri.parse(selectedImg.toString()), null, null, null, null)
-//                    c!!.moveToNext()
-//                    val absolutePath = c!!.getString(c!!.getColumnIndex(MediaStore.MediaColumns.DATA))
-//                    val file = File(absolutePath)
-//                    val header = mutableMapOf<String, String?>()
-//                    val sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
-//                    header["token"] = sharedPref.getString("token", "token")
-//                    val rqFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
-//                    var photo : MultipartBody.Part = MultipartBody.Part.createFormData("profile", file.getName(), rqFile)
-//                    service.requestUserProfile(photo,header).customEnqueue(
-//                        onError = {Log.d("error >>>> ", "통신에러")},
-//                        onSuccess = {
-//                            if (it.success){
-//                                Log.d("성공", it.message + " / ")
-//                            }else{
-//                                Log.d("status >>>> ", it.success.toString() + " / " + it.status.toString() + " / " + it.message)
-//                            }
-//                        }
-//                    )
+                    val intent = Intent(this, ChallengeActivity::class.java)
+                    //intent.putExtra("imgUri", selectedImg.toString())
+                    intent.data = selectedImg
+                    startActivity(intent)
                 }
             }
         }
