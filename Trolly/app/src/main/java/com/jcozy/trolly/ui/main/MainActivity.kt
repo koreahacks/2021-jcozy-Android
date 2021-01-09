@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             )
         }
 
-        /*val header = mutableMapOf<String, String>()
+        val header = mutableMapOf<String, String>()
         header["Content-Type"] = "application/json"
         header["token"] = sharedPref.getString("token", "token").toString()
         if (header["token"] == "token") {
@@ -169,7 +169,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 },
                 onSuccess = {
                     if(it.success)
-                }*/
+                }
 
 
         mainTimeAttackAdapter.data = data
