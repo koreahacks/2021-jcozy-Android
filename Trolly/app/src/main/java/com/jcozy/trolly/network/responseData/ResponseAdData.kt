@@ -11,6 +11,7 @@ data class ResponseAdData(
 data class AdData(
 
     val completed : Int,
+    val sub_title : String,
     val image : String,
     val title : String,
     val level : Int,

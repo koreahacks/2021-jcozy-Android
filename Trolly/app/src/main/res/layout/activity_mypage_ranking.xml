@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="537위"
+            android:text="13위"
             android:textColor="@color/white"
             android:includeFontPadding="false"
             android:textSize="24dp"

@@ -34,4 +34,7 @@ interface RequestInterface{
     //퀘스트 후기 사진
     @GET("/quest/images/{questIdx}")
     fun requestQuestDetailReview(@HeaderMap headers: Map<String, String?>, @Path("questIdx") questIdx: String): Call<ResponseQuestDetailReviewData>
+    //마이페이지 랭킹
+    //@GET("/user/mypage/rank")
+    //fun requestRanking(@HeaderMap headers: Map<String, String?>): Call<ResponseMypageRankingData>
 }
