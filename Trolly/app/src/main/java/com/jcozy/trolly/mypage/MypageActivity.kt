@@ -5,12 +5,23 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.jcozy.trolly.R
+import kotlinx.android.synthetic.main.activity_mypage.*
 
 class MypageActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage)
 
+        setSupportActionBar(tb_mypage)
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.icon_before)
+
+        view_mypage_level.setOnClickListener(this)
+        view_mypage_rank.setOnClickListener(this)
+        view_mypage_history.setOnClickListener(this)
 
     }
 
