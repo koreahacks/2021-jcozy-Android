@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import com.jcozy.trolly.ItemDecoration
 import com.jcozy.trolly.R
 import com.jcozy.trolly.StampDialog
@@ -35,23 +37,65 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         ic_mypage.setOnClickListener(this)
 
-        mainTimeAttackAdapter = MainTimeAttackAdapter(this){MainTimeAttackData, View ->
-            val intent = Intent(this, TimeAttackActivity::class.java)
-        }
+        mainTimeAttackAdapter = MainTimeAttackAdapter(this)
         main_time_rc.adapter = mainTimeAttackAdapter
-
+        main_time_rc.offscreenPageLimit = 4
+        main_time_rc.clipChildren = false
+        main_time_rc.addItemDecoration(ItemDecoration(this, 0, 0, 10, 0))
         mainmainAdapter = MainMainAdapter(this){ MainMainData, View ->
             val intent = Intent(this, QuestDetailActivity::class.java)
             startActivity(intent)
         }
-        main_main_rc.adapter = mainmainAdapter
 
+//        val compositePageTransformer = CompositePageTransformer()
+//        compositePageTransformer.addTransformer(MarginPageTransformer(10))
+//        compositePageTransformer.addTransformer { view, position ->
+//
+//            when {
+//                position <= -1.0F -> {
+//                    view.translationX = view.width * position
+//                    view.scaleX = 0.6f
+//                    view.scaleY = 0.6f
+//                    view.alpha = 0.4F
+//                }
+//                position > -1.0F && position < 0.0F -> {
+//                    view.translationX = view.width * -position
+//                    view.scaleX = 1.0f - (Math.abs(position) / 4)
+//                    view.scaleY = 1.0f - (Math.abs(position) / 4)
+//                    view.alpha = 1.0F - (Math.abs(position) / 2)
+//                }
+//                else -> {
+//                    view.scaleX = 1.0f
+//                    view.scaleY = 1.0f
+//                    view.alpha = 1.0F
+//                }
+//            }
+//        }
+//        main_time_rc.setPageTransformer(compositePageTransformer)
+        main_main_rc.adapter = mainmainAdapter
+        main_main_rc.addItemDecoration(
+            ItemDecoration(
+                this,
+                0,
+                0,
+                0,
+                20
+            )
+        )
         mainSubAdapter = MainSubAdapter(this){ MainSubData, View ->
             val intent = Intent(this, QuestDetailActivity::class.java)
             startActivity(intent)
         }
-
-
+        main_sub_rc.adapter = mainSubAdapter
+        main_sub_rc.addItemDecoration(
+            ItemDecoration(
+                this,
+                0,
+                12,
+                12,
+                0
+            )
+        )
         loadMainTimeAttackData()
         loadMainMainData()
         loadMainSubData()
@@ -63,47 +107,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        main_time_rc.addItemDecoration(
-            ItemDecoration(
-                this,
-                0,
-                20,
-                0,
-                0
-
-            )
-        )
-
-        main_main_rc.adapter = mainmainAdapter
-        main_main_rc.addItemDecoration(
-            ItemDecoration(
-                this,
-                0,
-                0,
-                0,
-                16
-            )
-        )
-        main_sub_rc.adapter = mainSubAdapter
-        main_sub_rc.addItemDecoration(
-            ItemDecoration(
-                this,
-                0,
-                12,
-                12,
-                0
-            )
-        )
-    }
-
 
     private fun loadMainTimeAttackData(){
         data.apply {
             add(
                 MainTimeAttackData(
                     timeattackIdx = 1,
+                    mainImg = "https://images.unsplash.com/photo-1479186479563-2af7090284c6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
+                    name = "쇼 미더 문",
+                    time = "5:00PM - 6:00PM",
+                    people = 10
+                )
+            )
+            add(
+                MainTimeAttackData(
+                    timeattackIdx = 2,
+                    mainImg = "https://images.unsplash.com/photo-1479186479563-2af7090284c6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
+                    name = "쇼 미더 문",
+                    time = "5:00PM - 6:00PM",
+                    people = 10
+                )
+            )
+            add(
+                MainTimeAttackData(
+                    timeattackIdx = 2,
                     mainImg = "https://images.unsplash.com/photo-1479186479563-2af7090284c6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
                     name = "쇼 미더 문",
                     time = "5:00PM - 6:00PM",
