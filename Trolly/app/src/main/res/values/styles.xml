@@ -3,8 +3,24 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TabTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:showDividers">middle</item>
+        <item name="colorPrimary">@color/black</item>                                <!-- 배경 -->
+        <item name="android:textColorPrimary">@android:color/white</item>       <!-- 탭바 선택된 텍스트 -->
+        <item name="android:textColorSecondary">@android:color/white</item>     <!-- 탭바 텍스트 -->
+        <item name="colorAccent">@color/red01</item>                    <!-- 하단 움직이는 바 색-->
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="TabTextStyle" parent="@style/Widget.AppCompat.ActionBar.TabBar">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="color">@color/white</item>
+        <item name="android:fontFamily">@font/spoqahansansneo_bold</item>
     </style>
 
     <style name="title_text_big" parent="@android:style/Widget.TextView">
