@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.jcozy.trolly.network.MainTimeAttackData
+import com.jcozy.trolly.network.responseData.MainTimeAttackData
 import com.jcozy.trolly.R
 import kotlin.properties.Delegates
 

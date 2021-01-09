@@ -1,6 +1,6 @@
-package com.jcozy.trolly.network
+package com.jcozy.trolly.network.responseData
 
-/*
+
 data class ResponseMainMainData(
 
     val status: Int,
@@ -12,6 +12,12 @@ data class ResponseMainMainData(
 
 data class MainMainData(
 
+    val mainmainIdx : Int,
+    val mainImg : String,
+    val name : String,
+    val level : Int,
+    val people : Int
+
 )
-*/
+
 
