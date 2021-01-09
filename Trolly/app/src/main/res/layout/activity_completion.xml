@@ -5,8 +5,13 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/image_background_m"
     tools:context=".ui.questdetail.CompletionActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/image_background_m"
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/btn_x"

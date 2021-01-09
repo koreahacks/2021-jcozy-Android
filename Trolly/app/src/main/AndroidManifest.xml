@@ -18,10 +18,11 @@
         android:roundIcon="@mipmap/ic_trolly_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.questdetail.CompletionActivity"></activity>
-        <activity android:name=".ui.timeattack.TimeAttackActivity"></activity>
+        <activity android:name=".ui.questdetail.ChallengeActivity"></activity>
+        <activity android:name=".ui.questdetail.CompletionActivity" />
+        <activity android:name=".ui.timeattack.TimeAttackActivity" />
         <activity android:name=".ui.timeattack.TimeAttackPartiActivity" />
-        <activity android:name=".ui.questdetail.QuestDetailActivity"></activity>
+        <activity android:name=".ui.questdetail.QuestDetailActivity" />
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,10 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.jcozy.trolly.ui.mypage.MypageActivity" />
-        <activity android:name="com.jcozy.trolly.ui.mypage.MypageLevelActivity" />
-        <activity android:name="com.jcozy.trolly.ui.mypage.MypageRankingActivity" />
-        <activity android:name="com.jcozy.trolly.ui.mypage.HistoryActivity" />
+        <activity android:name=".ui.mypage.MypageActivity" />
+        <activity android:name=".ui.mypage.MypageLevelActivity" />
+        <activity android:name=".ui.mypage.MypageRankingActivity" />
+        <activity android:name=".ui.mypage.HistoryActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

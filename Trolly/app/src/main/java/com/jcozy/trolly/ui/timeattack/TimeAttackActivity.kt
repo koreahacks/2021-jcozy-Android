@@ -41,11 +41,11 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         tb_timeattack.elevation = 5F
         view_realtime_participants.setOnClickListener(this)
 
-//        tv_timer.text = countdownText
 
         //서버에서 보내주는 카운트다운
-//        val leftSeconds = //종료시간 - 현재시간
-        val countDownTimer = object : CountDownTimer(360000, 1000){
+        val leftSeconds = (time_left() * 1000).toLong()
+
+        val countDownTimer = object : CountDownTimer(leftSeconds, 1000){
             override fun onTick(p0: Long) {
                 tv_timer.text = getTime()
             }
@@ -94,57 +94,35 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
             }*/
             }
         }
+    fun time_left() : Int{
+            val date = Date()
+            val calendar : Calendar = GregorianCalendar()
+            calendar.time = date
 
+            val cur_hour: Int = calendar.get(Calendar.HOUR_OF_DAY)
+            val cur_minute = calendar.get(Calendar.MINUTE)
+            val cur_second = calendar.get(Calendar.SECOND)
 
+            /*서버에서 종료시간 받아오기.*/
+//        val test_time = "2021-01-10T20:00:00.000Z"
+            val test_time = "2021-01-10T07:24:30.000Z"
+            val test_end_hour = test_time.substring(11,13).toInt()
+            val test_end_min = test_time.substring(14,16).toInt()
+            val test_end_sec = test_time.substring(17,19).toInt()
+
+            val end_millis = (test_end_hour * 3600 + test_end_min * 60 + test_end_sec)
+            val cur_millis = (cur_hour * 3600 + cur_minute * 60 + cur_second)
+
+            val diff = end_millis - cur_millis
+            return diff
+    }
     fun getTime() : String {
-
-        val date = Date()
-        val calendar : Calendar = GregorianCalendar()
-        calendar.time = date
-        /*val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)*/
-        val cur_hour: Int = calendar.get(Calendar.HOUR_OF_DAY)
-        val cur_minute = calendar.get(Calendar.MINUTE)
-        val cur_second = calendar.get(Calendar.SECOND)
-
-        val curTime = System.currentTimeMillis()
-        Log.d("TESTHERE","현재시각을 알려드립니다." + curTime)
-        val simpleTimeFormat : SimpleDateFormat = SimpleDateFormat("hh:mm:ss")
-        val str = simpleTimeFormat.format(Date(curTime))
-        val date_to_str = SimpleDateFormat("yy-MM-DD hh:mm:ss").format(Date(curTime))
-        Log.i(str, "simple_date_format을 거친 시각 값.")
-        Log.i(date_to_str, "Date값을 그대로 출력해 본다.")
-
-
-        /*서버에서 종료시간 받아오기.*/
-        val test_time = "2021-01-10T20:00:00.000Z"
-        val test_end_hour = test_time.substring(11,13).toInt()
-        val test_end_min = test_time.substring(14,16).toInt()
-        val test_end_sec = test_time.substring(17,19).toInt()
-
-        val diff_sec = (test_end_hour * 3600 + test_end_min * 60 + test_end_sec) * 1000
-
-
-        val end_hour = calendar.get(Calendar.HOUR_OF_DAY)
-        val end_minute = calendar.get(Calendar.MINUTE)
-        val end_second = calendar.get(Calendar.SECOND)
-
-        val startTime = GregorianCalendar(cur_hour,cur_minute,cur_second)
-        val endTime = GregorianCalendar(end_hour, end_minute, end_second)
-
-        val diff = System.currentTimeMillis()
+        val diff = time_left()
         val hour = Math.floor((diff/3600).toDouble()).toInt()
         val min = (Math.floor((diff - (hour * 3600))/60.toDouble()).toInt())
         val sec = (Math.floor((diff - (hour * 3600) - (min * 60)).toDouble())).toInt()
 
-
-
-
-//        val endTime = simpleTimeFormat.format()
-//        val countdownText : String = String.format("%02d : %02d : %02d", TimeUnit.MILLISECONDS.toHours(60), TimeUnit.MILLISECONDS.toMinutes(60) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(60)), TimeUnit.MILLISECONDS.toSeconds(60) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(60)))
         val test_countdownText : String = String.format("%02d : %02d : %02d", hour, min, sec)
-
 
         return test_countdownText
     }
