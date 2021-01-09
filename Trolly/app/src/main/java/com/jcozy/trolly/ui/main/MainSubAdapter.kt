@@ -1,4 +1,4 @@
-package com.jcozy.trolly.main
+package com.jcozy.trolly.ui.main
 
 import android.content.Context
 import android.view.LayoutInflater
