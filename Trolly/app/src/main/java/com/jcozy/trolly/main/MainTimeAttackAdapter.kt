@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jcozy.trolly.network.MainTimeAttackData
+import com.jcozy.trolly.network.responseData.MainTimeAttackData
 import com.jcozy.trolly.R
 
 class MainTimeAttackAdapter(private val context: Context/*, val itemClick: (MainTimeAttackData, View) -> Unit*/) : RecyclerView.Adapter<MainTimeAttackViewHolder>() {
