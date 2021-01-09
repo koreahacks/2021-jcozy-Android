@@ -1,14 +1,20 @@
 package com.jcozy.trolly.ui.main
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.jcozy.trolly.ItemDecoration
 import com.jcozy.trolly.R
 import com.jcozy.trolly.StampDialog
+import com.jcozy.trolly.network.RequestToServer
+import com.jcozy.trolly.network.RequestToServer.service
+import com.jcozy.trolly.network.customEnqueue
 import com.jcozy.trolly.ui.mypage.MypageActivity
 import com.jcozy.trolly.network.responseData.MainMainData
 import com.jcozy.trolly.network.responseData.MainSubData
@@ -23,6 +29,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var mainTimeAttackAdapter : MainTimeAttackAdapter
     lateinit var mainmainAdapter : MainMainAdapter
     lateinit var mainSubAdapter : MainSubAdapter
+
+    val service = RequestToServer.service
+    lateinit var sharedPref: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
 
 
     val data = mutableListOf<MainTimeAttackData>()
@@ -40,6 +50,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val intent = Intent(this, TimeAttackActivity::class.java)
             startActivity(intent)
         }
+        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
+        editor = sharedPref.edit()
+        editor.putString("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmZhMDgxNzU0YWM3ZjRkM2NmMzgwNjEiLCJpYXQiOjE2MTAyMjE1OTIsImlzcyI6Im91ci1zb3B0In0.1PgxkZCH3e0rj72v_rq9hr2cuCqOV-xff3HCn9AcdRY")
+        editor.apply()
+        editor.commit()
 
         main_time_rc.adapter = mainTimeAttackAdapter
         main_time_rc.offscreenPageLimit = 4
@@ -150,6 +165,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 )
             )
         }
+
+        /*val header = mutableMapOf<String, String>()
+        header["Content-Type"] = "application/json"
+        header["token"] = sharedPref.getString("token", "token").toString()
+        if (header["token"] == "token") {
+            service.requestMainQuest(header).customEnqueue(
+                onError = {
+                    Toast.makeText(this, "올바르지 않은 요청입니다.", Toast.LENGTH_SHORT)
+                },
+                onSuccess = {
+                    if(it.success)
+                }*/
+
 
         mainTimeAttackAdapter.data = data
         mainTimeAttackAdapter.notifyDataSetChanged()
