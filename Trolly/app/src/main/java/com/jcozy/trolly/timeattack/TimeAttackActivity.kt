@@ -22,7 +22,7 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
-//        supportActionBar!!.setHomeAsUpIndicator(R.drawable.icon_before)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.icon_before)
 
         tb_timeattack.elevation = 5F
 
