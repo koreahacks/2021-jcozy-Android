@@ -15,7 +15,8 @@ class MainTimeAttackAdapter(private val context: Context, val itemClick: (MainTi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainTimeAttackViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main_timeattack, parent, false)
         return MainTimeAttackViewHolder(
-            view, itemClick
+            view,
+            itemClick
         )
     }
 

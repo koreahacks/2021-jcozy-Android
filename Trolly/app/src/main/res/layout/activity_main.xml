@@ -73,13 +73,14 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:clipToPadding="false"
         android:descendantFocusability="blocksDescendants"
         android:fillViewport="true"
         android:overScrollMode="never"
         android:layout_marginTop="56dp"
         android:paddingBottom="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
@@ -102,7 +103,7 @@
                 >
             </TextView>
             
-            <androidx.recyclerview.widget.RecyclerView
+            <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/main_time_rc"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
@@ -110,6 +111,8 @@
                 android:clipToPadding="false"
                 android:overScrollMode="never"
                 android:orientation="horizontal"
+                android:paddingRight="34dp"
+                android:paddingStart="20dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/main_time_text"
                 app:layout_constraintStart_toStartOf="parent"

@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:src="@drawable/icon_next"
+        android:src="@drawable/icon_next_big"
         app:layout_constraintBottom_toBottomOf="@id/tv_mypage_username"
         app:layout_constraintEnd_toEndOf="@id/iv_mypage_userprofile"
         app:layout_constraintStart_toEndOf="@id/tv_mypage_username"
@@ -104,7 +104,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/icon_next"
+        android:src="@drawable/icon_next_big"
         app:layout_constraintBottom_toBottomOf="@id/tv_mypage_mylevel"
         app:layout_constraintEnd_toStartOf="@id/end_guideline_mypage"
         app:layout_constraintTop_toTopOf="@id/tv_mypage_mylevel" />
@@ -155,7 +155,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/icon_next"
+        android:src="@drawable/icon_next_big"
         app:layout_constraintBottom_toBottomOf="@id/tv_mypage_myrank"
         app:layout_constraintEnd_toStartOf="@id/end_guideline_mypage"
         app:layout_constraintTop_toTopOf="@id/tv_mypage_myrank" />
@@ -195,7 +195,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/icon_next"
+        android:src="@drawable/icon_next_big"
         app:layout_constraintTop_toTopOf="@id/view_mypage_history"
         app:layout_constraintBottom_toBottomOf="@id/view_mypage_history"
         app:layout_constraintEnd_toEndOf="@id/end_guideline_mypage"/>
