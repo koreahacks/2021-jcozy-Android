@@ -1,17 +1,20 @@
 package com.jcozy.trolly.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.jcozy.trolly.ItemDecoration
 import com.jcozy.trolly.R
+import com.jcozy.trolly.mypage.MypageActivity
 import com.jcozy.trolly.network.responseData.MainMainData
 import com.jcozy.trolly.network.responseData.MainSubData
 import com.jcozy.trolly.network.responseData.MainTimeAttackData
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , View.OnClickListener {
 
     lateinit var mainTimeAttackAdapter : MainTimeAttackAdapter
     lateinit var mainmainAdapter : MainMainAdapter
@@ -142,6 +145,20 @@ class MainActivity : AppCompatActivity() {
 
         mainSubAdapter.data = subData
         mainSubAdapter.notifyDataSetChanged()
+    }
+
+    override fun onClick(p0: View?) {
+        when(p0?.id){
+            R.id.ic_mypage -> {
+                val intent = Intent(applicationContext, MypageActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.ic_stamp -> {
+                /*
+                * stamp 팝업창 띄울 곳
+                * */
+            }
+        }
     }
 
 
