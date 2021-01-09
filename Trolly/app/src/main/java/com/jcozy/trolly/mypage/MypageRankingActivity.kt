@@ -15,7 +15,7 @@ class MypageRankingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ranking)
+        setContentView(R.layout.activity_mypage_ranking)
 
         rankingAdapter = MypageRankingAdapter(this)
         rc_ranking.adapter = rankingAdapter
