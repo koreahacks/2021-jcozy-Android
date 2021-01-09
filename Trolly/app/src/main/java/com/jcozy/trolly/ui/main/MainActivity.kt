@@ -4,13 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.jcozy.trolly.ItemDecoration
 import com.jcozy.trolly.R
 import com.jcozy.trolly.StampDialog
-import com.jcozy.trolly.mypage.MypageActivity
+import com.jcozy.trolly.ui.mypage.MypageActivity
 import com.jcozy.trolly.network.responseData.MainMainData
 import com.jcozy.trolly.network.responseData.MainSubData
 import com.jcozy.trolly.network.responseData.MainTimeAttackData
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var mainTimeAttackAdapter : MainTimeAttackAdapter
     lateinit var mainmainAdapter : MainMainAdapter
     lateinit var mainSubAdapter : MainSubAdapter
-    lateinit var viewPager : ViewPager
 
 
     val data = mutableListOf<MainTimeAttackData>()
