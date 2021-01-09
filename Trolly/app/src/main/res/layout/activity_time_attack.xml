@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:theme="@style/Theme.AppCompat.NoActionBar">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_timeattack"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/black"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_timeattack"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:id="@+id/iv_timeattack"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_fullmoon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_timeattack_activated"
+                android:layout_width="48dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/background_hotpink_round"
+                android:text="NOW"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@id/iv_timeattack"
+                app:layout_constraintTop_toTopOf="@id/iv_timeattack" />
+
+            <TextView
+                android:id="@+id/tv_timeattack_title"
+                style="@style/title_text_big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="쇼 미 더 문"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_timeattack_activated"
+                app:layout_constraintTop_toBottomOf="@id/tv_timeattack_activated" />
+
+            <TextView
+                android:id="@+id/tv_howto_title"
+                style="@style/content_text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="수행방법"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_timeattack" />
+
+            <TextView
+                android:id="@+id/tv_howto_detail"
+                style="@style/content_text_body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="나의 손과 함께 나온 달 사진을 찍고 사진을 시간 안에 업로드 해 인증해주세요."
+                app:layout_constraintEnd_toEndOf="@id/end_guideline_ta"
+                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
+                app:layout_constraintTop_toBottomOf="@id/tv_howto_title" />
+
+            <View
+                android:id="@+id/timeattack_guideline1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="18.5dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/tv_howto_detail" />
+
+            <TextView
+                android:id="@+id/tv_timeattack_timeleft"
+                style="@style/content_text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21.5dp"
+                android:text="남은 시간"
+                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
+                app:layout_constraintTop_toBottomOf="@id/timeattack_guideline1" />
+
+            <TextView
+                android:id="@+id/tv_timer"
+                style="@style/timer_text"
+                android:layout_width="wrap_content"
+                android:layout_height="71dp"
+                android:layout_marginTop="22dp"
+                android:text="00 : 48 : 25"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_timeattack_timeleft" />
+
+            <View
+                android:id="@+id/timeattack_guideline2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="28.5dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/tv_timer" />
+
+            <TextView
+                android:id="@+id/tv_realtime_title"
+                style="@style/content_text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21.5dp"
+                android:text="실시간 참여"
+                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
+                app:layout_constraintTop_toBottomOf="@id/timeattack_guideline2" />
+
+            <TextView
+                android:id="@+id/tv_realtime_detail"
+                style="@style/content_text_body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="실시간으로 열리는 타임어택 퀘스트에 참여한 트롤들의 미션을 구경해보세요."
+                app:layout_constraintEnd_toEndOf="@id/end_guideline_ta"
+                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
+                app:layout_constraintTop_toBottomOf="@id/tv_realtime_title" />
+
+            <View
+                android:id="@+id/view_realtime_participants"
+                android:layout_width="0dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="44.5dp"
+                android:background="@color/darkgray"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline_ta"
+                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
+                app:layout_constraintTop_toBottomOf="@id/tv_realtime_detail" />
+
+            <TextView
+                style="@style/button_white_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:text="54명 참여"
+                app:layout_constraintBottom_toBottomOf="@id/view_realtime_participants"
+                app:layout_constraintEnd_toStartOf="@id/iv_timeattack_next"
+                app:layout_constraintTop_toTopOf="@id/view_realtime_participants" />
+
+            <ImageView
+                android:id="@+id/iv_timeattack_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/view_realtime_participants"
+                app:layout_constraintEnd_toEndOf="@id/view_realtime_participants"
+                app:layout_constraintTop_toTopOf="@id/view_realtime_participants" />
+
+            <View
+                android:id="@+id/timeattack_guideline3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="44.5dp"
+                app:layout_constraintTop_toBottomOf="@id/view_realtime_participants" />
+
+            <TextView
+                android:id="@+id/tv_explain_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="설명"
+                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
+                style="@style/content_text_title"
+                app:layout_constraintTop_toBottomOf="@id/timeattack_guideline3"
+                android:layout_marginTop="21.5dp"/>
+            
+            <TextView
+                android:id="@+id/tv_explain_head2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/title_text_big"
+                android:text="요즘 트롤들 사이에서 랜선 집들이가 유행이라며...?"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline_ta"
+                app:layout_constraintTop_toBottomOf="@id/tv_explain_title"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="62dp"/>
+
+            <TextView
+                android:id="@+id/tv_explain_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="내려온 가슴이 이상을 시들어 타오르고 품었기 관현악이며, 거선의 인류의 말이다. 끓는 밥을 싹이 크고 피고, 청춘 이상의 얼마나 아름다우냐? 피고, 꾸며 인생에 위하여서 그들은 얼마나 가치를 고동을 속에서 철환하였는가? 커다란 얼음 있는"
+                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
+                app:layout_constraintEnd_toEndOf="@id/end_guideline_ta"
+                style="@style/content_text_detail_body"
+                app:layout_constraintTop_toBottomOf="@id/tv_explain_head2"
+                android:layout_marginEnd="48dp"
+                android:layout_marginTop="14dp"/>
+
+            <Button
+                android:id="@+id/btn_timeattack_challenge"
+                style="@style/button_big_white_text"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:background="@drawable/background_gradient_button"
+                android:text="도전하기"
+                android:layout_marginTop="93dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_explain_detail"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_guideline_ta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_guideline_ta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

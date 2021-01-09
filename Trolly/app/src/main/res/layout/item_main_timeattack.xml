@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/time_img"
+        android:src="@drawable/img_photo_moon"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="306:220"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_time_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="쇼미더 달사진"
+        android:textSize="20dp"
+        android:fontFamily="@font/spoqahansansneo_bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        />
+
+    <ImageView
+        android:id="@+id/ic_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_clock"
+        app:layout_constraintTop_toTopOf="@id/tv_time_time"
+        app:layout_constraintBottom_toBottomOf="@id/tv_time_time"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="12dp"/>
+
+    <TextView
+        android:id="@+id/tv_time_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5:00PM - 6:00PM"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:fontFamily="@font/poppins_bold"
+        android:includeFontPadding="false"
+        app:layout_constraintStart_toEndOf="@id/ic_time"
+        app:layout_constraintTop_toBottomOf="@id/tv_time_name"
+        android:layout_marginTop="9dp"
+        android:layout_marginStart="4dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="now"
+        android:textColor="@color/white"
+        android:textSize="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:includeFontPadding="false"
+        android:background="@drawable/icon_hotpinkbtn"
+        android:paddingHorizontal="11dp"
+        android:paddingVertical="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_time_people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="140명 참여중"
+        android:textSize="14dp"
+        android:fontFamily="@font/spoqahansansneo_bold"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="17dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_parti_userprofile"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="31dp"
+        android:layout_marginStart="21dp"
+        />
+    
+    <TextView
+        android:id="@+id/tv_parti_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="귀염둥이 라이언"
+        style="@style/content_text_title"
+        app:layout_constraintStart_toEndOf="@id/iv_parti_userprofile"
+        app:layout_constraintTop_toTopOf="@id/iv_parti_userprofile"
+        app:layout_constraintBottom_toBottomOf="@id/iv_parti_userprofile"
+        android:layout_marginStart="9dp"/>
+
+    <TextView
+        android:id="@+id/tv_uploadtime_parti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="방금"
+        style="@style/content_text_body"
+        app:layout_constraintTop_toTopOf="@id/iv_parti_userprofile"
+        app:layout_constraintBottom_toBottomOf="@id/iv_parti_userprofile"
+        app:layout_constraintEnd_toEndOf="@id/end_guide_liveparti"/>
+    
+    <ImageView
+        android:id="@+id/iv_live_parti"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="320:200"
+        android:src="@drawable/img_fullmoon"
+        app:layout_constraintTop_toBottomOf="@id/iv_parti_userprofile"
+        app:layout_constraintStart_toStartOf="@id/start_guide_liveparti"
+        app:layout_constraintEnd_toEndOf="@id/end_guide_liveparti"
+        android:layout_marginTop="15dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guide_liveparti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guide_liveparti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp"/>
+
+
+
+        
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
