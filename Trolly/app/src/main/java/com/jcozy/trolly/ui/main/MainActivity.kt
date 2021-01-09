@@ -46,31 +46,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
-//        val compositePageTransformer = CompositePageTransformer()
-//        compositePageTransformer.addTransformer(MarginPageTransformer(10))
-//        compositePageTransformer.addTransformer { view, position ->
-//
-//            when {
-//                position <= -1.0F -> {
-//                    view.translationX = view.width * position
-//                    view.scaleX = 0.6f
-//                    view.scaleY = 0.6f
-//                    view.alpha = 0.4F
-//                }
-//                position > -1.0F && position < 0.0F -> {
-//                    view.translationX = view.width * -position
-//                    view.scaleX = 1.0f - (Math.abs(position) / 4)
-//                    view.scaleY = 1.0f - (Math.abs(position) / 4)
-//                    view.alpha = 1.0F - (Math.abs(position) / 2)
-//                }
-//                else -> {
-//                    view.scaleX = 1.0f
-//                    view.scaleY = 1.0f
-//                    view.alpha = 1.0F
-//                }
-//            }
-//        }
-//        main_time_rc.setPageTransformer(compositePageTransformer)
+        val compositePageTransformer = CompositePageTransformer()
+        compositePageTransformer.addTransformer(MarginPageTransformer(10))
+        compositePageTransformer.addTransformer { view, position ->
+
+            when {
+                position <= -1.0F -> {
+                    view.translationX = view.width * position
+                    view.scaleX = 0.6f
+                    view.scaleY = 0.6f
+                    view.alpha = 0.4F
+                }
+                position > -1.0F && position < 0.0F -> {
+                    view.translationX = view.width * -position
+                    view.scaleX = 1.0f - (Math.abs(position) / 4)
+                    view.scaleY = 1.0f - (Math.abs(position) / 4)
+                    view.alpha = 1.0F - (Math.abs(position) / 2)
+                }
+                else -> {
+                    view.scaleX = 1.0f
+                    view.scaleY = 1.0f
+                    view.alpha = 1.0F
+                }
+            }
+        }
+        main_time_rc.setPageTransformer(compositePageTransformer)
         main_main_rc.adapter = mainmainAdapter
         main_main_rc.addItemDecoration(
             ItemDecoration(
