@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.jcozy.trolly.CustomDialog
 import com.jcozy.trolly.R
+import com.jcozy.trolly.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_quest_detail.*
 import java.io.File
 import java.io.IOException
@@ -170,5 +172,17 @@ class QuestDetailActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> {
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

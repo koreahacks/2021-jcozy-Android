@@ -24,7 +24,7 @@ class MainTimeAttackViewHolder(itemView: View, val itemClick:(MainTimeAttackData
         time.text = myData.time
         people.text = myData.people.toString() + "명 참여"
 
-       /* itemView.setOnClickListener { itemClick(myData, itemView) }*/
+        itemView.setOnClickListener { itemClick(myData, itemView) }
     }
 
 

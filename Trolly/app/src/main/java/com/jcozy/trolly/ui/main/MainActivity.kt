@@ -37,11 +37,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         ic_mypage.setOnClickListener(this)
 
-        mainTimeAttackAdapter = MainTimeAttackAdapter(this){
-            MainTimeAttackData, View ->
+        mainTimeAttackAdapter = MainTimeAttackAdapter(this){ MainTimeAttackData, View ->
             val intent = Intent(this, TimeAttackActivity::class.java)
             startActivity(intent)
         }
+
         main_time_rc.adapter = mainTimeAttackAdapter
         main_time_rc.offscreenPageLimit = 4
         main_time_rc.clipChildren = false
