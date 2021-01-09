@@ -105,7 +105,7 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
             /*서버에서 종료시간 받아오기.*/
 //        val test_time = "2021-01-10T20:00:00.000Z"
-            val test_time = "2021-01-10T04:24:30.000Z"
+            val test_time = "2021-01-10T07:24:30.000Z"
             val test_end_hour = test_time.substring(11,13).toInt()
             val test_end_min = test_time.substring(14,16).toInt()
             val test_end_sec = test_time.substring(17,19).toInt()
