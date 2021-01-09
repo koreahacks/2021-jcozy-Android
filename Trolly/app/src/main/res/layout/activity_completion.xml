@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/image_background_m"
+    tools:context=".ui.questdetail.CompletionActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:src="@drawable/icon_x"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_quest"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:src="@drawable/icon_main"
+        android:layout_marginTop="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spoqahansansneo"
+        android:lineSpacingExtra="11sp"
+        android:text="인증 완료"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="22dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_quest"
+        app:layout_constraintStart_toStartOf="@+id/iv_quest"
+        app:layout_constraintTop_toBottomOf="@+id/iv_quest" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="13dp"
+        android:fontFamily="@font/spoqahansansneo"
+        android:lineSpacingExtra="6sp"
+        android:text="메인"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/tv_remain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gray_roundbox_14"
+        android:fontFamily="@font/poppins"
+        android:lineSpacingExtra="6sp"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="4dp"
+        android:text="2/2"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="12sp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/btn_stamp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/gray04"
+        android:fontFamily="@font/spoqahansansneo"
+        android:textFontWeight="700"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:lineSpacingExtra="8sp"
+        android:text="스탬프 바로가기"
+        android:gravity="left"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/icon_stamp"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_next_big"
+        android:layout_marginRight="20dp"
+        android:elevation="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_stamp"
+        app:layout_constraintTop_toTopOf="@+id/btn_stamp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
