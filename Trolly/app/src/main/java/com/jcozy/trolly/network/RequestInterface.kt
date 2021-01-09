@@ -1,6 +1,5 @@
 package com.jcozy.trolly.network
 
-import com.bumptech.glide.annotation.GlideExtension
 import com.jcozy.trolly.network.responseData.*
 import retrofit2.Call
 import retrofit2.http.GET
@@ -21,6 +20,10 @@ interface RequestInterface{
     //퀘스트 세부 페이지
     @GET("/quest/detail/{questIdx}")
     fun requestQuestDetail(@HeaderMap headers: Map<String, String?>, @Path("questIdx") questIdx: String): Call<ResponseQuestDetailData>
+    //타임어택 세부 페이지
+    @GET("/quest/detail/{questidx)")
+    fun requestTADetail(@HeaderMap headers: Map<String, String?>, @Path("questIdx") questIdx: String): Call<ResponseTADetailData>
+
     //퀘스트 후기 사진
     @GET("/quest/images/{questIdx}")
     fun requestQuestDetailReview(@HeaderMap headers: Map<String, String?>, @Path("questIdx") questIdx: String): Call<ResponseQuestDetailReviewData>

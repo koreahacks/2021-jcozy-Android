@@ -55,8 +55,8 @@ class QuestDetailActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)   // 뒤로가기 버튼
         toolbar.elevation = 0F
 
-        title = ""
-        explanation = ""
+//        title = ""
+//        explanation = ""
         tablayout.addTab(tablayout.newTab().setText("설명"),0)
         tablayout.addTab(tablayout.newTab().setText("후기"),1)
 

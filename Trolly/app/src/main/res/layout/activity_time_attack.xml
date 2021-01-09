@@ -156,6 +156,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_realtime_detail" />
 
             <TextView
+                android:id="@+id/tv_howmany_tried"
                 style="@style/button_white_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -192,19 +193,20 @@
                 style="@style/content_text_title"
                 app:layout_constraintTop_toBottomOf="@id/timeattack_guideline3"
                 android:layout_marginTop="21.5dp"/>
-            
+
             <TextView
                 android:id="@+id/tv_explain_head2"
+                style="@style/title_text_big"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/title_text_big"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="62dp"
                 android:text="요즘 트롤들 사이에서 랜선 집들이가 유행이라며...?"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
                 app:layout_constraintEnd_toEndOf="@id/end_guideline_ta"
-                app:layout_constraintTop_toBottomOf="@id/tv_explain_title"
-                android:layout_marginTop="36dp"
-                android:layout_marginEnd="62dp"/>
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/start_guideline_ta"
+                app:layout_constraintTop_toBottomOf="@id/tv_explain_title" />
 
             <TextView
                 android:id="@+id/tv_explain_detail"
