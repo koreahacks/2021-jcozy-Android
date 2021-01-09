@@ -12,6 +12,7 @@ import com.jcozy.trolly.mypage.MypageActivity
 import com.jcozy.trolly.network.responseData.MainMainData
 import com.jcozy.trolly.network.responseData.MainSubData
 import com.jcozy.trolly.network.responseData.MainTimeAttackData
+import com.jcozy.trolly.ui.questdetail.QuestDetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -44,7 +45,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 0
             )
         )
-        mainmainAdapter = MainMainAdapter(this)
+        mainmainAdapter = MainMainAdapter(this){ MainMainData, View ->
+            val intent = Intent(this, QuestDetailActivity::class.java)
+            startActivity(intent)
+        }
         main_main_rc.adapter = mainmainAdapter
         main_main_rc.addItemDecoration(
             ItemDecoration(
@@ -55,7 +59,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 20
             )
         )
-        mainSubAdapter = MainSubAdapter(this)
+        mainSubAdapter = MainSubAdapter(this){ MainSubData, View ->
+            val intent = Intent(this, QuestDetailActivity::class.java)
+            startActivity(intent)
+        }
         main_sub_rc.adapter = mainSubAdapter
         main_sub_rc.addItemDecoration(
             ItemDecoration(

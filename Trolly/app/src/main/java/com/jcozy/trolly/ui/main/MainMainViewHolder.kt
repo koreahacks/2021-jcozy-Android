@@ -10,7 +10,7 @@ import com.jcozy.trolly.R
 import com.jcozy.trolly.network.responseData.MainMainData
 import kotlin.properties.Delegates
 
-class MainMainViewHolder(itemView: View/*, val itemClick:(MainMainData, View) -> Unit*/): RecyclerView.ViewHolder(itemView){
+class MainMainViewHolder(itemView: View, val itemClick:(MainMainData, View) -> Unit): RecyclerView.ViewHolder(itemView){
 
     var mainmainIdx by Delegates.notNull<Int>()
     var mainImg : ImageView = itemView.findViewById(R.id.main_img)
@@ -25,7 +25,7 @@ class MainMainViewHolder(itemView: View/*, val itemClick:(MainMainData, View) ->
         level.text = "Lv" + myData.level.toString()
         people.text = myData.people.toString() + "명 참여"
 
-        /* itemView.setOnClickListener { itemClick(myData, itemView) }*/
+        itemView.setOnClickListener { itemClick(myData, itemView) }
     }
 
 }
