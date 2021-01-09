@@ -2,6 +2,7 @@ package com.jcozy.trolly.ui.timeattack
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -28,20 +29,19 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         tb_timeattack.elevation = 5F
         view_realtime_participants.setOnClickListener(this)
 
-
 //        tv_timer.text = countdownText
 
         //서버에서 보내주는 카운트다운
 //        val leftSeconds = //종료시간 - 현재시간
-//        val countDownTimer = object : CountDownTimer(leftSeconds, 1000){
-//            override fun onTick(p0: Long) {
-//                tv_timer.text = getTime()
-//            }
-//
-//            override fun onFinish() {
-//                tv_timer.text = "종료"
-//            }
-//        }
+        val countDownTimer = object : CountDownTimer(360000, 1000){
+            override fun onTick(p0: Long) {
+                tv_timer.text = getTime()
+            }
+
+            override fun onFinish() {
+                tv_timer.text = "종료"
+            }
+        }
 
 
 

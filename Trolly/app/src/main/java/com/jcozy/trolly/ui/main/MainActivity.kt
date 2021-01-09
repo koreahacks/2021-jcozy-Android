@@ -12,6 +12,7 @@ import com.jcozy.trolly.network.responseData.MainMainData
 import com.jcozy.trolly.network.responseData.MainSubData
 import com.jcozy.trolly.network.responseData.MainTimeAttackData
 import com.jcozy.trolly.ui.questdetail.QuestDetailActivity
+import com.jcozy.trolly.ui.timeattack.TimeAttackActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -31,7 +32,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         ic_mypage.setOnClickListener(this)
 
-        mainTimeAttackAdapter = MainTimeAttackAdapter(this)
+        mainTimeAttackAdapter = MainTimeAttackAdapter(this){ MainTimeAttackData, View ->
+            val intent = Intent(this, TimeAttackActivity::class.java)
+            startActivity(intent)
+        }
+
         main_time_rc.adapter = mainTimeAttackAdapter
         main_time_rc.addItemDecoration(
             ItemDecoration(

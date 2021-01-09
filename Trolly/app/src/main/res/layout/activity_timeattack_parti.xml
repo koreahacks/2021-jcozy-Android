@@ -12,6 +12,16 @@
         android:layout_height="56dp"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="실시간 참여"
+        style="@style/content_text_title"
+        app:layout_constraintStart_toStartOf="@id/tb_timeattack_parti"
+        app:layout_constraintEnd_toEndOf="@id/tb_timeattack_parti"
+        app:layout_constraintTop_toTopOf="@id/tb_timeattack_parti"
+        app:layout_constraintBottom_toBottomOf="@id/tb_timeattack_parti"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_timeattack_upload"
         android:layout_width="match_parent"
