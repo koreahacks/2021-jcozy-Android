@@ -1,13 +1,21 @@
 package com.jcozy.trolly
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.provider.MediaStore
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_quest_detail.*
 
 class QuestDetailActivity : AppCompatActivity() {
+
+    val IMAGE_FROM_GALLERY = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quest_detail)
@@ -40,6 +48,23 @@ class QuestDetailActivity : AppCompatActivity() {
         })
 
         initView()
+
+
+        button_confirm.setOnClickListener {
+            val customDialog = CustomDialog(this)
+            customDialog.setOnOKClickedListener {
+                if(it){
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivity(intent)
+                }
+                else{
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                    startActivity(intent)
+                }
+            }
+            customDialog.start()
+        }
 
     }
 
