@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup_logout"
+    android:layout_width="320dp"
+    android:layout_height="623dp"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/btn_x"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="8dp"
+        android:padding="10dp"
+        android:src="@drawable/icon_x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="11sp"
+        android:text="밍트롤"
+        android:textColor="@color/white"
+        android:textFontWeight="400"
+        android:textSize="24dp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_x" />
+
+    <ImageView
+        android:id="@+id/iv_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/icon_level3"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_level"
+        app:layout_constraintEnd_toStartOf="@+id/tv_level"
+        app:layout_constraintTop_toTopOf="@+id/tv_level" />
+
+    <TextView
+        android:id="@+id/tv_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="9sp"
+        android:text="LEVEL 3"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_nickname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_nickname" />
+
+    <View
+        android:id="@+id/v_divide_line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="14dp"
+        android:background="@color/gray01"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nickname" />
+
+    <TextView
+        android:id="@+id/tv_remain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/spoqahansansneo"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="8sp"
+        android:text="퀘스트 2개만 더하면 레벨업!"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_divide_line1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/spoqahansansneo"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="6sp"
+        android:text="메인"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_remain"
+        app:layout_constraintTop_toBottomOf="@+id/tv_remain" />
+
+    <TextView
+        android:id="@+id/tv_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/gray_roundbox_14"
+        android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="6sp"
+        android:paddingHorizontal="13dp"
+        android:paddingVertical="4dp"
+        android:text="2/2"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/spoqahansansneo"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="6sp"
+        android:text="서브"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_sub"
+        app:layout_constraintEnd_toStartOf="@+id/tv_sub"
+        app:layout_constraintTop_toTopOf="@+id/tv_sub" />
+
+    <TextView
+        android:id="@+id/tv_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gray_roundbox_14"
+        android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="6sp"
+        android:paddingHorizontal="13dp"
+        android:paddingVertical="4dp"
+        android:text="2/2"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_remain"
+        app:layout_constraintTop_toTopOf="@+id/tv_main" />
+
+    <View
+        android:id="@+id/v_divide_line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="31dp"
+        android:background="@color/gray01"
+        app:layout_constraintTop_toBottomOf="@id/tv_main" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/spoqahansansneo"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="6sp"
+        android:text="메인 퀘스트"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_divide_line2" />
+
+    <ImageView
+        android:id="@+id/iv_main1"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/gray03"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="110dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/iv_main2"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:scaleType="fitXY"
+        android:layout_marginStart="8dp"
+        android:background="@color/gray03"
+        app:layout_constraintStart_toEndOf="@+id/iv_main1"
+        app:layout_constraintTop_toTopOf="@+id/iv_main1" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spoqahansansneo"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="6sp"
+        android:text="서브 퀘스트"
+        android:textColor="@color/white"
+        android:textFontWeight="700"
+        android:textSize="14sp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_main1" />
+
+    <ImageView
+        android:id="@+id/iv_sub1"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        android:background="@color/gray03"
+        android:layout_marginStart="83dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <ImageView
+        android:id="@+id/iv_sub2"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:background="@color/gray03"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@+id/iv_sub1"
+        app:layout_constraintTop_toBottomOf="@+id/iv_sub1" />
+
+    <ImageView
+        android:id="@+id/iv_sub3"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:background="@color/gray03"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/iv_sub2"
+        app:layout_constraintTop_toTopOf="@+id/iv_sub2" />
+
+    <ImageView
+        android:id="@+id/iv_sub4"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:background="@color/gray03"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/iv_sub3"
+        app:layout_constraintTop_toTopOf="@+id/iv_sub3" />
+
+    <ImageView
+        android:id="@+id/iv_sub5"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:background="@color/gray03"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="@+id/iv_sub4"
+        app:layout_constraintTop_toBottomOf="@+id/iv_sub4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
