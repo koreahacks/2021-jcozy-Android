@@ -22,7 +22,7 @@ class MainMainViewHolder(itemView: View, val itemClick:(MainMainData, View) -> U
         mainmainIdx = myData.mainmainIdx
         Glide.with(itemView).load(myData.mainImg).into(mainImg)
         name.text = myData.name
-        level.text = "Lv" + myData.level.toString()
+        level.text = "Lv. " + myData.level.toString()
         people.text = myData.people.toString() + "명 참여"
 
         itemView.setOnClickListener { itemClick(myData, itemView) }

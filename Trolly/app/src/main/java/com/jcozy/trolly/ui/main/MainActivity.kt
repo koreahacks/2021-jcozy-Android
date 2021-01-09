@@ -13,6 +13,7 @@ import com.jcozy.trolly.network.responseData.MainMainData
 import com.jcozy.trolly.network.responseData.MainSubData
 import com.jcozy.trolly.network.responseData.MainTimeAttackData
 import com.jcozy.trolly.ui.questdetail.QuestDetailActivity
+import com.jcozy.trolly.ui.timeattack.TimeAttackActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -34,21 +35,47 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         ic_mypage.setOnClickListener(this)
 
-        mainTimeAttackAdapter = MainTimeAttackAdapter(this)
+        mainTimeAttackAdapter = MainTimeAttackAdapter(this){MainTimeAttackData, View ->
+            val intent = Intent(this, TimeAttackActivity::class.java)
+        }
         main_time_rc.adapter = mainTimeAttackAdapter
-        main_time_rc.addItemDecoration(
-            ItemDecoration(
-                this,
-                20,
-                0,
-                30,
-                0
-            )
-        )
+
         mainmainAdapter = MainMainAdapter(this){ MainMainData, View ->
             val intent = Intent(this, QuestDetailActivity::class.java)
             startActivity(intent)
         }
+        main_main_rc.adapter = mainmainAdapter
+
+        mainSubAdapter = MainSubAdapter(this){ MainSubData, View ->
+            val intent = Intent(this, QuestDetailActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        loadMainTimeAttackData()
+        loadMainMainData()
+        loadMainSubData()
+
+        ic_stamp.setOnClickListener {
+            val stampDialog = StampDialog(this)
+            stampDialog.start("몽블리", 2, 1, 3)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        main_time_rc.addItemDecoration(
+            ItemDecoration(
+                this,
+                0,
+                20,
+                0,
+                0
+
+            )
+        )
+
         main_main_rc.adapter = mainmainAdapter
         main_main_rc.addItemDecoration(
             ItemDecoration(
@@ -56,13 +83,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 0,
                 0,
                 0,
-                20
+                16
             )
         )
-        mainSubAdapter = MainSubAdapter(this){ MainSubData, View ->
-            val intent = Intent(this, QuestDetailActivity::class.java)
-            startActivity(intent)
-        }
         main_sub_rc.adapter = mainSubAdapter
         main_sub_rc.addItemDecoration(
             ItemDecoration(
@@ -73,15 +96,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 0
             )
         )
-        loadMainTimeAttackData()
-        loadMainMainData()
-        loadMainSubData()
-
-        ic_stamp.setOnClickListener {
-            val stampDialog = StampDialog(this)
-            stampDialog.start("몽블리", 2, 1, 3)
-        }
-
     }
 
 
