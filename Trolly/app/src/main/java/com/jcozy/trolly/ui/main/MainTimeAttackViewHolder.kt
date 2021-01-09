@@ -9,7 +9,7 @@ import com.jcozy.trolly.network.responseData.MainTimeAttackData
 import com.jcozy.trolly.R
 import kotlin.properties.Delegates
 
-class MainTimeAttackViewHolder(itemView: View/*, val itemClick:(MainTimeAttackData, View) -> Unit*/) : RecyclerView.ViewHolder(itemView){
+class MainTimeAttackViewHolder(itemView: View, val itemClick:(MainTimeAttackData, View) -> Unit) : RecyclerView.ViewHolder(itemView){
 
     var timeattackIdx by Delegates.notNull<Int>()
     var mainImg : ImageView = itemView.findViewById(R.id.time_img)
