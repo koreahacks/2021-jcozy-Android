@@ -23,7 +23,6 @@ import com.jcozy.trolly.R
 import com.jcozy.trolly.network.RequestToServer
 import com.jcozy.trolly.network.customEnqueue
 import com.jcozy.trolly.network.responseData.QuestDetailData
-import com.jcozy.trolly.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_quest_detail.*
 import java.io.File
 import java.io.IOException
@@ -42,7 +41,7 @@ class QuestDetailActivity : AppCompatActivity() {
     lateinit var editor: SharedPreferences.Editor
     lateinit var QuestDetailData : QuestDetailData
     lateinit var title : String
-    lateinit var explaination : String
+    lateinit var explanation : String
     val bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +55,8 @@ class QuestDetailActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)   // 뒤로가기 버튼
         toolbar.elevation = 0F
 
+//        title = ""
+//        explanation = ""
         tablayout.addTab(tablayout.newTab().setText("설명"),0)
         tablayout.addTab(tablayout.newTab().setText("후기"),1)
 
@@ -64,7 +65,7 @@ class QuestDetailActivity : AppCompatActivity() {
         initView()
 
         bundle.putString("title", title)
-        bundle.putString("how_to", explaination)
+        bundle.putString("how_to", explanation)
         ExplanationFragment().arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.tab_viewpager, ExplanationFragment()).commit()
 
@@ -144,7 +145,7 @@ class QuestDetailActivity : AppCompatActivity() {
                 tv_way.text = it.data.how_to
                 Glide.with(this).load(it.data.image).into(iv_main)
                 title = it.data.title
-                explaination = it.data.description
+                explanation = it.data.description
                 Log.d("안",title)
             }
         )
