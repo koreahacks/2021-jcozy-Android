@@ -3,6 +3,7 @@ package com.jcozy.trolly.ui.timeattack
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -42,8 +43,7 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
                 tv_timer.text = "종료"
             }
         }
-
-
+        countDownTimer.start()
 
 
 
@@ -71,30 +71,44 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         val cur_second = calendar.get(Calendar.SECOND)
 
         val curTime = System.currentTimeMillis()
+        Log.d("TESTHERE","현재시각을 알려드립니다." + curTime)
         val simpleTimeFormat : SimpleDateFormat = SimpleDateFormat("hh:mm:ss")
         val str = simpleTimeFormat.format(Date(curTime))
+        val date_to_str = SimpleDateFormat("yy-MM-DD hh:mm:ss").format(Date(curTime))
+        Log.i(str, "simple_date_format을 거친 시각 값.")
+        Log.i(date_to_str, "Date값을 그대로 출력해 본다.")
 
 
         /*서버에서 종료시간 받아오기.*/
+        val test_time = "2021-01-10T20:00:00.000Z"
+        val test_end_hour = test_time.substring(11,13).toInt()
+        val test_end_min = test_time.substring(14,16).toInt()
+        val test_end_sec = test_time.substring(17,19).toInt()
+
+        val diff_sec = (test_end_hour * 3600 + test_end_min * 60 + test_end_sec) * 1000
+
+
         val end_hour = calendar.get(Calendar.HOUR_OF_DAY)
         val end_minute = calendar.get(Calendar.MINUTE)
         val end_second = calendar.get(Calendar.SECOND)
-        
 
         val startTime = GregorianCalendar(cur_hour,cur_minute,cur_second)
         val endTime = GregorianCalendar(end_hour, end_minute, end_second)
 
-//        val diff_sec : long = System.currentTimeMillis()
-//        val hour = Math.floor((diffSec/3600))
-//        val min = Math.floor()
+        val diff = System.currentTimeMillis()
+        val hour = Math.floor((diff/3600).toDouble()).toInt()
+        val min = (Math.floor((diff - (hour * 3600))/60.toDouble()).toInt())
+        val sec = (Math.floor((diff - (hour * 3600) - (min * 60)).toDouble())).toInt()
 
 
 
 
-        val countdownText : String = String.format("%02d : %02d : %02d", TimeUnit.MILLISECONDS.toHours(60), TimeUnit.MILLISECONDS.toMinutes(60) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(60)), TimeUnit.MILLISECONDS.toSeconds(60) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(60)))
+//        val endTime = simpleTimeFormat.format()
+//        val countdownText : String = String.format("%02d : %02d : %02d", TimeUnit.MILLISECONDS.toHours(60), TimeUnit.MILLISECONDS.toMinutes(60) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(60)), TimeUnit.MILLISECONDS.toSeconds(60) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(60)))
+        val test_countdownText : String = String.format("%02d : %02d : %02d", hour, min, sec)
 
 
-        return countdownText
+        return test_countdownText
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
