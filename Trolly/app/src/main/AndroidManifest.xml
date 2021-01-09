@@ -18,6 +18,9 @@
         <activity android:name=".QuestDetailActivity">
         </activity>
         <activity android:name=".mypage.MypageActivity"/>
+        <activity android:name=".mypage.MypageLevelActivity"/>
+        <activity android:name=".mypage.MypageRankingActivity"/>
+        <activity android:name=".mypage.HistoryActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

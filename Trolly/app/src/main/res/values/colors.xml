@@ -11,7 +11,9 @@
     <color name="hotpink">#fd0044</color>
     <color name="hotpink2">#FF004E</color>
     <color name="gradientpink">#FF0043</color>
+    <color name="gradientpink_up">#d266FF</color>
     <color name="gradientblue">#2737FF</color>
     <color name="darkgrey">#2F2F2F</color>
     <color name="lightgrey">#BDBDBD</color>
+    <color name="gradientmint">#00d8aa</color>
 </resources>
