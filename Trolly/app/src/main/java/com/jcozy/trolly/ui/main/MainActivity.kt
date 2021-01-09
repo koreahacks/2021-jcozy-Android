@@ -1,9 +1,12 @@
 package com.jcozy.trolly.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.jcozy.trolly.ItemDecoration
 import com.jcozy.trolly.R
+import com.jcozy.trolly.mypage.MypageActivity
 import com.jcozy.trolly.ui.main.MainMainAdapter
 import com.jcozy.trolly.ui.main.MainSubAdapter
 import com.jcozy.trolly.network.responseData.MainMainData
@@ -13,7 +16,7 @@ import com.jcozy.trolly.ui.main.MainTimeAttackAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var mainTimeAttackAdapter : MainTimeAttackAdapter
     lateinit var mainmainAdapter : MainMainAdapter
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        ic_mypage.setOnClickListener(this)
 
         mainTimeAttackAdapter = MainTimeAttackAdapter(this)
         main_time_rc.adapter = mainTimeAttackAdapter
@@ -144,6 +148,15 @@ class MainActivity : AppCompatActivity() {
 
         mainSubAdapter.data = subData
         mainSubAdapter.notifyDataSetChanged()
+    }
+
+    override fun onClick(p0: View?) {
+        when (p0?.id) {
+            R.id.ic_mypage -> {
+                val intent = Intent(applicationContext, MypageActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
 

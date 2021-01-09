@@ -19,6 +19,7 @@
         android:layout_marginTop="42dp"
         android:text="밍트롤"
         app:layout_constraintEnd_toStartOf="@id/tv_mylevel_jo"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tb_mypage_level" />
 
@@ -27,6 +28,7 @@
         style="@style/content_text_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:text="님은"
         app:layout_constraintBottom_toBottomOf="@id/tv_mylevel_username"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,10 +38,13 @@
         android:id="@+id/view_block_level3"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:background="@drawable/item_level3"
-        app:layout_constraintEnd_toStartOf="@id/view_block_level2"
         android:layout_marginEnd="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_mylevel_username" />
+        android:background="@drawable/item_level3"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="100.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/view_block_level2"
+        app:layout_constraintTop_toTopOf="@id/view_block_level1" />
 
     <View
         android:id="@+id/view_block_level2"
@@ -47,68 +52,186 @@
         android:layout_height="36dp"
         android:layout_marginStart="4dp"
         android:background="@drawable/item_level2"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/view_block_level3" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/view_block_level1" />
 
     <View
         android:id="@+id/view_block_level1"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/item_level1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/view_block_level2"
         app:layout_constraintTop_toBottomOf="@id/tv_mylevel_jo" />
 
 
     <TextView
         android:id="@+id/tv_mylevel"
+        style="@style/title_text_big"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="LEVEL 3"
-        style="@style/title_text_big"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_block_level1"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_block_level1" />
 
     <TextView
         android:id="@+id/tv_level_explain"
+        style="@style/content_text_body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="68dp"
+        android:layout_marginTop="28dp"
         android:text="트랜드를 즐기줄 아는 멋쟁이군요!\n집에서도 혼자 즐겁게 놀줄 아는 당신의\n트렌드 감각은 평균 이상이랍니다."
         android:textAlignment="center"
-        style="@style/content_text_body"
-        app:layout_constraintTop_toBottomOf="@id/tv_mylevel"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_mylevel" />
 
     <View
         android:id="@+id/mylevel_guideline1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="26.3dp"
         android:background="@color/darkgrey"
-        app:layout_constraintTop_toBottomOf="@id/tv_level_explain"
-        android:layout_marginTop="26.3dp"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_level_explain" />
 
     <TextView
+        android:id="@+id/tv_waytogo"
+        style="@style/content_text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="29.7dp"
         android:text="퀘스트 2개만 더하면 레벨업!"
-        style="@style/content_text_title"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mylevel_guideline1"
-        android:layout_marginTop="29.7dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mylevel_guideline1" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/center_guideline"
+        app:layout_constraintEnd_toEndOf="@id/center_guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_waytogo"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/iv_icon_level1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_level1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_title_level1"
+            app:layout_constraintTop_toTopOf="@id/tv_title_level1"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title_level1"/>
+
+        <TextView
+            android:id="@+id/tv_title_level1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LEVEL 1"
+            android:layout_marginStart="6dp"
+            style="@style/content_text_title"
+            app:layout_constraintStart_toEndOf="@id/iv_icon_level1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="트렌드 꿈나무"
+            style="@style/content_text_detail_body"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_level1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp"/>
+
+        <ImageView
+            android:id="@+id/iv_icon_level2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_level2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintEnd_toStartOf="@id/tv_title_level2"
+            app:layout_constraintTop_toTopOf="@id/tv_title_level2"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title_level2"/>
+
+        <TextView
+            android:id="@+id/tv_title_level2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LEVEL 2"
+            style="@style/content_text_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_level1"
+            app:layout_constraintStart_toEndOf="@id/iv_icon_level2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="54dp"
+            android:layout_marginStart="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="준비된 열정 만수르"
+            style="@style/content_text_detail_body"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_level2"
+            android:layout_marginTop="4dp"/>
+
+        <ImageView
+            android:id="@+id/iv_icon_level3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_level3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintEnd_toStartOf="@id/tv_title_level3"
+            app:layout_constraintTop_toTopOf="@id/tv_title_level3"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title_level3"/>
+
+        <TextView
+            android:id="@+id/tv_title_level3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LEVEL 3"
+            style="@style/content_text_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_level2"
+            app:layout_constraintStart_toEndOf="@id/iv_icon_level3"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="54dp"
+            android:layout_marginStart="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="트렌드 선구자"
+            style="@style/content_text_detail_body"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_level3"
+            android:layout_marginTop="4dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
-
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/center_guideline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
