@@ -1,8 +1,9 @@
-package com.jcozy.trolly
+package com.jcozy.trolly.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jcozy.trolly.main.MainTimeAttackAdapter
+import com.jcozy.trolly.ItemDecoration
+import com.jcozy.trolly.R
 import com.jcozy.trolly.network.MainTimeAttackData
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -17,7 +18,14 @@ class MainActivity : AppCompatActivity() {
 
         mainTimeAttackAdapter = MainTimeAttackAdapter(this)
         main_time_rc.adapter = mainTimeAttackAdapter
-        main_time_rc.addItemDecoration(ItemDecoration(this, 20,30, 0))
+        main_time_rc.addItemDecoration(
+            ItemDecoration(
+                this,
+                20,
+                30,
+                0
+            )
+        )
         loadMainTimeAttackData()
 
     }

@@ -1,4 +1,4 @@
-package com.jcozy.trolly.timeattack
+package com.jcozy.trolly.ui.timeattack
 
 import android.view.View
 import android.widget.ImageView
@@ -6,7 +6,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jcozy.trolly.R
-import kotlinx.android.synthetic.main.item_live_parti.view.*
 
 class TimeAttackPartiViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
     var userprofile = itemView.findViewById<ImageView>(R.id.iv_parti_userprofile)

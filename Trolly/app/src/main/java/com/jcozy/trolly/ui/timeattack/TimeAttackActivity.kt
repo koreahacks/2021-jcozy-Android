@@ -1,8 +1,7 @@
-package com.jcozy.trolly.timeattack
+package com.jcozy.trolly.ui.timeattack
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.jcozy.trolly.R

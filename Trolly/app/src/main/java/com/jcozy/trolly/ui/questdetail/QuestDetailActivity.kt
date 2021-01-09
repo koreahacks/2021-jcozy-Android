@@ -1,15 +1,13 @@
-package com.jcozy.trolly
+package com.jcozy.trolly.ui.questdetail
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
+import com.jcozy.trolly.CustomDialog
+import com.jcozy.trolly.R
 import kotlinx.android.synthetic.main.activity_quest_detail.*
 
 class QuestDetailActivity : AppCompatActivity() {
@@ -32,7 +30,10 @@ class QuestDetailActivity : AppCompatActivity() {
 
         val bundle = Bundle()
         ExplanationFragment().arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.tab_viewpager, ExplanationFragment()).commit()
+        supportFragmentManager.beginTransaction().add(
+            R.id.tab_viewpager,
+            ExplanationFragment()
+        ).commit()
 
         tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {}
