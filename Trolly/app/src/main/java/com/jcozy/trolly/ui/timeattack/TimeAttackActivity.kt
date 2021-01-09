@@ -1,20 +1,31 @@
 package com.jcozy.trolly.ui.timeattack
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
+import com.jcozy.trolly.CustomDialog
 import com.jcozy.trolly.R
 import com.jcozy.trolly.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_time_attack.*
+import java.io.File
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
+
+    val IMAGE_FROM_GALLERY = 0
+    val IMAGE_FROM_CAMERA = 1
+    lateinit var selectedImg : Uri
+    lateinit var imageFilePath: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_attack)
@@ -56,8 +67,35 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
                 val intent = Intent(applicationContext, TimeAttackPartiActivity::class.java)
                 startActivity(intent)
             }
+            /*R.id.btn_timeattack_challenge ->{
+                val customDialog = CustomDialog(this)
+                customDialog.setOnOKClickedListener {
+                    if(it){
+                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        if (intent.resolveActivity(packageManager) != null) {
+                            var photoFile: File? = null
+                            try {
+                                photoFile = createImageFile()
+                            } catch (ex: IOException) {
+                                // Error occurred while creating the File
+                            }
+                            if (photoFile != null) {
+                                selectedImg = FileProvider.getUriForFile(this, packageName, photoFile)
+                                intent.putExtra(MediaStore.EXTRA_OUTPUT, selectedImg)
+                                startActivityForResult(intent,IMAGE_FROM_CAMERA)
+                            }
+                        }
+                    }
+                    else{
+                        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                        startActivityForResult(intent,IMAGE_FROM_GALLERY)
+                    }
+                }
+                customDialog.start()
+            }*/
+            }
         }
-    }
+
 
 
 
