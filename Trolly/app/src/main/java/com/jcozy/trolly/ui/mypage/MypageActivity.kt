@@ -67,14 +67,15 @@ class MypageActivity : AppCompatActivity(), View.OnClickListener {
             onSuccess = {
 
                     tv_mypage_username.text = it.data.name
+                    tv_user_info.text = it.data.email
                     Glide.with(applicationContext).load(it.data.profileImg).into(iv_mypage_userprofile)
                     tv_mypage_mylevel.text = "LEVEL " +  it.data.level
                     if(it.data.level == 1){
-
+                        tv_mypage_mylevel_detail.text = "트렌드 꿈나무"
                     }else if(it.data.level == 2){
-
+                        tv_mypage_mylevel_detail.text = "준비된 열정 만수르"
                     }else if(it.data.level ==3){
-                        
+                        tv_mypage_mylevel_detail.text = "당신은 트렌드를 이끌어가는 선구자군요!"
                     }
                     tv_mypage_myrank.text = "" + it.data.ranking + "위"
             },onFail = {

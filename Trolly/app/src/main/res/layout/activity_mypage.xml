@@ -59,7 +59,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:visibility="gone"
         android:text="username@gmail.com"
         app:layout_constraintEnd_toEndOf="@id/iv_mypage_userprofile"
         app:layout_constraintStart_toStartOf="@id/iv_mypage_userprofile"
