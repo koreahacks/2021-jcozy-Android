@@ -2,9 +2,11 @@ package com.jcozy.trolly.ui.timeattack
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.jcozy.trolly.R
+import com.jcozy.trolly.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_time_attack.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,7 +26,6 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.icon_before)
 
         tb_timeattack.elevation = 5F
-
         view_realtime_participants.setOnClickListener(this)
 
 
@@ -94,5 +95,17 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
 
         return countdownText
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> {
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
