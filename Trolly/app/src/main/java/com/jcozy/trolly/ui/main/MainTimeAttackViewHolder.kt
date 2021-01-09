@@ -22,7 +22,7 @@ class MainTimeAttackViewHolder(itemView: View/*, val itemClick:(MainTimeAttackDa
         Glide.with(itemView).load(myData.mainImg).into(mainImg)
         name.text = myData.name
         time.text = myData.time
-        people.text = myData.people.toString() + "명 참여중"
+        people.text = myData.people.toString() + "명 참여"
 
        /* itemView.setOnClickListener { itemClick(myData, itemView) }*/
     }
