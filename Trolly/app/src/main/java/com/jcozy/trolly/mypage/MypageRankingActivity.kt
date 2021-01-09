@@ -19,8 +19,9 @@ class MypageRankingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mypage_ranking)
 
         ic_mypage_before.setOnClickListener {
-            val intent = Intent(applicationContext, MypageActivity::class.java)
+            val intent = Intent(this, MypageActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         rankingAdapter = MypageRankingAdapter(this)
