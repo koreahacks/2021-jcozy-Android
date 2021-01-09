@@ -41,12 +41,11 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         tb_timeattack.elevation = 5F
         view_realtime_participants.setOnClickListener(this)
 
-//        tv_timer.text = countdownText
 
         //서버에서 보내주는 카운트다운
-        //val leftSeconds = //종료시간 - 현재시간
+        val leftSeconds = (time_left() * 1000).toLong()
 
-        val countDownTimer = object : CountDownTimer(360000, 1000){
+        val countDownTimer = object : CountDownTimer(leftSeconds, 1000){
             override fun onTick(p0: Long) {
                 tv_timer.text = getTime()
             }
@@ -95,32 +94,30 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
             }*/
             }
         }
+    fun time_left() : Int{
+            val date = Date()
+            val calendar : Calendar = GregorianCalendar()
+            calendar.time = date
 
+            val cur_hour: Int = calendar.get(Calendar.HOUR_OF_DAY)
+            val cur_minute = calendar.get(Calendar.MINUTE)
+            val cur_second = calendar.get(Calendar.SECOND)
 
-
-
-
-    fun getTime() : String {
-
-        val date = Date()
-        val calendar : Calendar = GregorianCalendar()
-        calendar.time = date
-
-        val cur_hour: Int = calendar.get(Calendar.HOUR_OF_DAY)
-        val cur_minute = calendar.get(Calendar.MINUTE)
-        val cur_second = calendar.get(Calendar.SECOND)
-
-        /*서버에서 종료시간 받아오기.*/
+            /*서버에서 종료시간 받아오기.*/
 //        val test_time = "2021-01-10T20:00:00.000Z"
-        val test_time = "2021-01-10T03:49:50.000Z"
-        val test_end_hour = test_time.substring(11,13).toInt()
-        val test_end_min = test_time.substring(14,16).toInt()
-        val test_end_sec = test_time.substring(17,19).toInt()
+            val test_time = "2021-01-10T04:24:30.000Z"
+            val test_end_hour = test_time.substring(11,13).toInt()
+            val test_end_min = test_time.substring(14,16).toInt()
+            val test_end_sec = test_time.substring(17,19).toInt()
 
-        val end_millis = (test_end_hour * 3600 + test_end_min * 60 + test_end_sec)
-        val cur_millis = (cur_hour * 3600 + cur_minute * 60 + cur_second)
+            val end_millis = (test_end_hour * 3600 + test_end_min * 60 + test_end_sec)
+            val cur_millis = (cur_hour * 3600 + cur_minute * 60 + cur_second)
 
-        val diff = end_millis - cur_millis
+            val diff = end_millis - cur_millis
+            return diff
+    }
+    fun getTime() : String {
+        val diff = time_left()
         val hour = Math.floor((diff/3600).toDouble()).toInt()
         val min = (Math.floor((diff - (hour * 3600))/60.toDouble()).toInt())
         val sec = (Math.floor((diff - (hour * 3600) - (min * 60)).toDouble())).toInt()
