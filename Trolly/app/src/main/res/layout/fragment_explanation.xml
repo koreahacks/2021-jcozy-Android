@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="5dp"
+    tools:context=".ExplanationFragment">
+
+    <TextView
+        android:id="@+id/tv_intro1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spoqahansansneo"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="12sp"
+        android:paddingRight="20dp"
+        android:text="요즘 트롤들사이에서\n랜선 집들이가 유행이라며..?"
+        android:textColor="#ffffff"
+        android:textFontWeight="700"
+        android:textSize="22dp"
+        android:layout_marginTop="39dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_explaination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spoqahansansneo"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="10sp"
+        android:textColor="#ffffff"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="14dp"
+        android:paddingBottom="68dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_intro1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_intro1"
+        android:text=" 내려온 가슴이 이상을 시들어 타오르고 품었기 관현악이며, 거선의 인류의 말이다. 끓는 밥을 싹이 크고 피고, 청춘 이상의 얼마나 아름다우냐? 피고, 꾸며 인생에 위하여서 그들은 얼마나 가치를 고동을 속에서 철환하였는가? 커다란 얼음 있는 내려온 가슴이 이상을 시들어 타오르고 품었기 관현악이며, 거선의 인류의 말이다. 끓는 밥을 싹이 크고 피고, 청춘 이상의 얼마나 아름다우냐? 피고, 꾸며 인생에 위하여서 그들은 얼마나 가치를 고동을 속에서 철환하였는가? 커다란 얼음 있는내려온 가슴이 이상을 시들어 타오르고 품었기 관현악이며, 거선의 인류의 말이다. 끓는 밥을 싹이 크고 피고, 청춘 이상의 얼마나 아름다우냐? 피고, 꾸며 인생에 위하여서 그들은 얼마나 가치를 고동을 속에서 철환하였는가? 커다란 얼음 있는 내려온 가슴이 이상을 시들어 타오르고 품었기 관현악이며, 거선의 인류의 말이다. 끓는 밥을 싹이 크고 피고, 청춘 이상의 얼마나 아름다우냐? 피고, 꾸며 인생에 위하여서 그들은 얼마나 가치를 고동을 속에서 철환하였는가? 커다란 얼음 있는내려온 가슴이 이상을 시들어 타오르고 품었기 관현악이며, 거선의 인류의 말이다. 끓는 밥을 싹이 크고 피고, 청춘 이상의 얼마나 아름다우냐? 피고, 꾸며 인생에 위하여서 그들은 얼마나 가치를 고동을 속에서 철환하였는가? 커다란 얼음 있는 내려온 가슴이 이상을 시들어 타오르고 품었기 관현악이며, 거선의 인류의 말이다. 끓는 밥을 싹이 크고 피고, 청춘 이상의 얼마나 아름다우냐? 피고, 꾸며 인생에 위하여서 그들은 얼마나 가치를 고동을 속에서 철환하였는가? 커다란 얼음 있는" />
+</androidx.constraintlayout.widget.ConstraintLayout>
