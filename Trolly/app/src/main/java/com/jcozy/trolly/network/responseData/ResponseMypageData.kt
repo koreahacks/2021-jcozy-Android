@@ -4,7 +4,7 @@ data class ResponseMypageData(
     val status: Int,
     val success: Boolean,
     val message: String,
-    val data: List<MypageData>
+    val data: MypageData
 )
 
 data class MypageData(

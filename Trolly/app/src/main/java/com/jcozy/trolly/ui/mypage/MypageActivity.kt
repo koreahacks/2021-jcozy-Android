@@ -13,12 +13,14 @@ import com.bumptech.glide.Glide
 import com.jcozy.trolly.R
 import com.jcozy.trolly.network.RequestToServer
 import com.jcozy.trolly.network.customEnqueue
+import com.jcozy.trolly.network.responseData.MypageData
 import kotlinx.android.synthetic.main.activity_mypage.*
 
 class MypageActivity : AppCompatActivity(), View.OnClickListener {
 
     val service = RequestToServer.service
     lateinit var sharedPref : SharedPreferences
+//    val mydata = mutableListOf<MypageData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,16 +59,26 @@ class MypageActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun loadMypage(){
-        val header = mutableMapOf<String, String?>()
+        val header = mutableMapOf<String, String>()
         header["Content-Type"] = "application/json"
-        header["token"] = sharedPref.getString("token", "token").toString()
+        header["TOKEN"] = sharedPref.getString("token", "token").toString()
         service.requestMypage(header).customEnqueue(
             onError = { Toast.makeText(this, "올바르지 않은 요청입니다.", Toast.LENGTH_SHORT)},
             onSuccess = {
-                    tv_mypage_username.text = it.data[0].name
-                    Glide.with(applicationContext).load(it.data[0].profileImg).into(iv_mypage_userprofile)
-                    tv_mypage_mylevel.text = "LEVEL " +  it.data[0].level
-                    tv_mypage_myrank.text = "" + it.data[0].ranking + "위"
+
+                    tv_mypage_username.text = it.data.name
+                    Glide.with(applicationContext).load(it.data.profileImg).into(iv_mypage_userprofile)
+                    tv_mypage_mylevel.text = "LEVEL " +  it.data.level
+                    if(it.data.level == 1){
+
+                    }else if(it.data.level == 2){
+
+                    }else if(it.data.level ==3){
+                        
+                    }
+                    tv_mypage_myrank.text = "" + it.data.ranking + "위"
+            },onFail = {
+                Log.e("TEST_HERE", "안 된다!!!!!")
             }
         )
     }
