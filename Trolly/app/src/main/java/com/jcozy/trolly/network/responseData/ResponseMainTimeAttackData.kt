@@ -1,4 +1,4 @@
-package com.jcozy.trolly.network
+package com.jcozy.trolly.network.responseData
 
 data class ResponseMainTimeAttackData(
 
