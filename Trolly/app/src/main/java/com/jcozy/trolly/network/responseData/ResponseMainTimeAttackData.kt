@@ -10,10 +10,11 @@ data class ResponseMainTimeAttackData(
 
 data class MainTimeAttackData(
 
-    val timeattackIdx : Int,
-    val mainImg : String,
-    val name : String,
-    val time : String,
-    val people : Int
+    val image : String,
+    val title : String,
+    val start : String,
+    val end : String,
+    val participant : Int,
+    val _id : String
 
 )

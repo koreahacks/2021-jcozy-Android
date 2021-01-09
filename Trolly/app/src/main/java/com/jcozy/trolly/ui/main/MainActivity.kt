@@ -13,7 +13,6 @@ import com.jcozy.trolly.ItemDecoration
 import com.jcozy.trolly.R
 import com.jcozy.trolly.StampDialog
 import com.jcozy.trolly.network.RequestToServer
-import com.jcozy.trolly.network.RequestToServer.service
 import com.jcozy.trolly.network.customEnqueue
 import com.jcozy.trolly.ui.mypage.MypageActivity
 import com.jcozy.trolly.network.responseData.MainMainData
@@ -127,109 +126,54 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun loadMainTimeAttackData(){
-        data.apply {
-            add(
-                MainTimeAttackData(
-                    timeattackIdx = 1,
-                    mainImg = "https://images.unsplash.com/photo-1479186479563-2af7090284c6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
-                    name = "쇼 미더 문",
-                    time = "5:00PM - 6:00PM",
-                    people = 10
-                )
-            )
-            add(
-                MainTimeAttackData(
-                    timeattackIdx = 2,
-                    mainImg = "https://images.unsplash.com/photo-1479186479563-2af7090284c6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
-                    name = "쇼 미더 문",
-                    time = "5:00PM - 6:00PM",
-                    people = 10
-                )
-            )
-            add(
-                MainTimeAttackData(
-                    timeattackIdx = 2,
-                    mainImg = "https://images.unsplash.com/photo-1479186479563-2af7090284c6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
-                    name = "쇼 미더 문",
-                    time = "5:00PM - 6:00PM",
-                    people = 10
-                )
-            )
-            add(
-                MainTimeAttackData(
-                    timeattackIdx = 2,
-                    mainImg = "https://images.unsplash.com/photo-1479186479563-2af7090284c6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
-                    name = "쇼 미더 문",
-                    time = "5:00PM - 6:00PM",
-                    people = 10
-                )
-            )
-        }
 
-        /*val header = mutableMapOf<String, String>()
+        val header = mutableMapOf<String, String>()
         header["Content-Type"] = "application/json"
-        header["token"] = sharedPref.getString("token", "token").toString()
-        if (header["token"] == "token") {
-            service.requestMainQuest(header).customEnqueue(
-                onError = {
-                    Toast.makeText(this, "올바르지 않은 요청입니다.", Toast.LENGTH_SHORT)
-                },
-                onSuccess = {
-                    if(it.success)
-                }*/
+        header["TOKEN"] = sharedPref.getString("token", "token").toString()
+        service.requestTimeAttack(header).customEnqueue(
+            onError = {Toast.makeText(this,"올바르지 않은 요청입니다.",Toast.LENGTH_SHORT)},
+            onSuccess = {
+                data.clear()
+                data.addAll(it.data)
+                mainTimeAttackAdapter.data = data
+                mainTimeAttackAdapter.notifyDataSetChanged()
+            }
+        )
 
-
-        mainTimeAttackAdapter.data = data
-        mainTimeAttackAdapter.notifyDataSetChanged()
 
     }
 
     private fun loadMainMainData(){
-        mainData.apply {
-            add(
-                MainMainData(
-                    mainmainIdx = 1,
-                    mainImg = "https://images.unsplash.com/photo-1549122728-f519709caa9c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1850&q=80",
-                    name = "문학소녀처럼, 독서타임",
-                    level = 3,
-                    people = 10
-                )
-            )
-            add(
-                MainMainData(
-                    mainmainIdx = 1,
-                    mainImg = "https://images.unsplash.com/photo-1549122728-f519709caa9c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1850&q=80",
-                    name = "문학소녀처럼, 독서타임",
-                    level = 3,
-                    people = 10
-                )
-            )
-        }
-        mainmainAdapter.data = mainData
-        mainmainAdapter.notifyDataSetChanged()
+
+        val header = mutableMapOf<String, String>()
+        header["Content-Type"] = "application/json"
+        header["TOKEN"] = sharedPref.getString("token", "token").toString()
+        service.requestMainQuest(header).customEnqueue(
+            onError = {Toast.makeText(this,"올바르지 않은 요청입니다.",Toast.LENGTH_SHORT)},
+            onSuccess = {
+                mainData.clear()
+                mainData.addAll(it.data)
+                mainmainAdapter.data = mainData
+                mainmainAdapter.notifyDataSetChanged()
+            }
+        )
+
     }
 
     private fun loadMainSubData(){
-        subData.apply{
-            add(
-                MainSubData(
-                    subIdx = 1,
-                    mainImg = "https://cdn.pixabay.com/photo/2016/12/30/17/27/cat-1941089__340.jpg",
-                    name = "느낌있는 막춤 챌린지",
-                    people = 11,
-                    level = 2
-                )
-            )
-            add(
-                MainSubData(
-                    subIdx = 1,
-                    mainImg = "https://cdn.pixabay.com/photo/2016/12/30/17/27/cat-1941089__340.jpg",
-                    name = "느낌있는 막춤 챌린지",
-                    people = 11,
-                    level = 2
-                )
-            )
-        }
+
+        val header = mutableMapOf<String, String>()
+        header["Content-Type"] = "application/json"
+        header["TOKEN"] = sharedPref.getString("token", "token").toString()
+        service.requestSubQuest(header).customEnqueue(
+            onError = {Toast.makeText(this,"올바르지 않은 요청입니다.",Toast.LENGTH_SHORT)},
+            onSuccess = {
+                subData.clear()
+                subData.addAll(it.data)
+                mainSubAdapter.data = subData
+                mainSubAdapter.notifyDataSetChanged()
+            }
+        )
 
         mainSubAdapter.data = subData
         mainSubAdapter.notifyDataSetChanged()

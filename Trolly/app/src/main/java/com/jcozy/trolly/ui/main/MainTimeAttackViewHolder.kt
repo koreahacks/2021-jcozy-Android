@@ -11,18 +11,25 @@ import kotlin.properties.Delegates
 
 class MainTimeAttackViewHolder(itemView: View, val itemClick:(MainTimeAttackData, View) -> Unit) : RecyclerView.ViewHolder(itemView){
 
-    var timeattackIdx by Delegates.notNull<Int>()
+    var id by Delegates.notNull<String>()
     var mainImg : ImageView = itemView.findViewById(R.id.time_img)
     var name : TextView = itemView.findViewById(R.id.tv_time_name)
     var time : TextView = itemView.findViewById(R.id.tv_time_time)
     var people : TextView = itemView.findViewById(R.id.tv_time_people)
 
     fun bind(myData : MainTimeAttackData){
-        timeattackIdx = myData.timeattackIdx
-        Glide.with(itemView).load(myData.mainImg).into(mainImg)
-        name.text = myData.name
-        time.text = myData.time
-        people.text = myData.people.toString() + "명 참여"
+        id = myData._id
+        Glide.with(itemView).load(myData.image).into(mainImg)
+        name.text = myData.title
+
+        val test_start_hour = myData.start.substring(11,13)
+        val test_start_min = myData.start.substring(14,16)
+
+        val test_end_hour = myData.end.substring(11,13)
+        val test_end_min = myData.end.substring(14,16)
+
+        time.text = test_start_hour + " : " + test_start_min + " - " + test_end_hour + " : "+ test_end_min
+        people.text = myData.participant.toString() + "명 참여"
 
         itemView.setOnClickListener { itemClick(myData, itemView) }
     }

@@ -10,10 +10,11 @@ data class ResponseMainSubData(
 
 data class MainSubData(
 
-    val subIdx : Int,
-    val mainImg : String,
-    val name : String,
+    val completed : Int,
+    val image : String,
+    val title : String,
     val level : Int,
-    val people : Int
+    val participant : Int,
+    val _id : String
 
 )

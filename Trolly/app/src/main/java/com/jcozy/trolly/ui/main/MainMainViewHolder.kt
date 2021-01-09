@@ -12,18 +12,30 @@ import kotlin.properties.Delegates
 
 class MainMainViewHolder(itemView: View, val itemClick:(MainMainData, View) -> Unit): RecyclerView.ViewHolder(itemView){
 
-    var mainmainIdx by Delegates.notNull<Int>()
-    var mainImg : ImageView = itemView.findViewById(R.id.main_img)
-    var name : TextView = itemView.findViewById(R.id.tv_main_name)
+
+    var id by Delegates.notNull<String>()
+    var image : ImageView = itemView.findViewById(R.id.main_img)
+    var title : TextView = itemView.findViewById(R.id.tv_main_name)
     var level : TextView = itemView.findViewById(R.id.tv_main_lv)
-    var people : TextView = itemView.findViewById(R.id.tv_main_people)
+    var participant : TextView = itemView.findViewById(R.id.tv_main_people)
+
+    var red : ImageView = itemView.findViewById(R.id.ic_completed_red)
+    var background : ImageView = itemView.findViewById(R.id.completed)
 
     fun bind(myData : MainMainData){
-        mainmainIdx = myData.mainmainIdx
-        Glide.with(itemView).load(myData.mainImg).into(mainImg)
-        name.text = myData.name
+        id = myData._id
+        if(myData.completed == 0){
+            background.visibility = View.GONE
+            red.visibility = View.GONE
+        }
+        else{
+            background.visibility = View.VISIBLE
+            red.visibility = View.VISIBLE
+        }
+        Glide.with(itemView).load(myData.image).into(image)
+        title.text = myData.title
         level.text = "Lv. " + myData.level.toString()
-        people.text = myData.people.toString() + "명 참여"
+        participant.text = myData.participant.toString() + "명 참여"
 
         itemView.setOnClickListener { itemClick(myData, itemView) }
     }
