@@ -22,6 +22,10 @@
         <activity android:name="com.jcozy.trolly.ui.timeattack.TimeAttackPartiActivity"/>
         <activity android:name=".ui.questdetail.QuestDetailActivity">
         </activity>
+        <activity android:name=".mypage.MypageActivity"/>
+        <activity android:name=".mypage.MypageLevelActivity"/>
+        <activity android:name=".mypage.MypageRankingActivity"/>
+        <activity android:name=".mypage.HistoryActivity"/>
         <activity android:name="com.jcozy.trolly.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +33,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.jcozy.trolly"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
     </application>
 

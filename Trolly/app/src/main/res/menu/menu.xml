@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/ic_search"
+        android:title="검색"
+        android:icon="@drawable/icon_search"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/ic_stamp"
+        android:title="스탬프"
+        android:icon="@drawable/icon_stamp"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/ic_mypage"
+        android:title="마이페이지"
+        android:icon="@drawable/icon_mypage"
+        app:showAsAction="always"/>
+
+</menu>

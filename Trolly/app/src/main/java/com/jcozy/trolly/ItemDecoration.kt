@@ -6,12 +6,12 @@ import android.util.TypedValue
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemDecoration(context: Context,private val first_left : Int, private val right: Int, private val bottom: Int) : RecyclerView.ItemDecoration() {
+class ItemDecoration(context: Context,private val first_left : Int, private val left : Int, private val right: Int, private val bottom: Int) : RecyclerView.ItemDecoration() {
 
     var r_size = dpToPx(context, right)
     var b_size = dpToPx(context, bottom)
     var fl_size = dpToPx(context, first_left)
-
+    var l_size = dpToPx(context, left)
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -21,8 +21,12 @@ class ItemDecoration(context: Context,private val first_left : Int, private val 
         super.getItemOffsets(outRect, view, parent, state)
         if(parent.getChildAdapterPosition(view) == 0)
             outRect.left = fl_size
-        if (parent.getChildAdapterPosition(view) != parent.adapter!!.itemCount - 1)
+        if (parent.getChildAdapterPosition(view) != parent.adapter!!.itemCount - 1) {
             outRect.right = r_size
+        }
+        if(parent.getChildAdapterPosition(view) == parent.adapter!!.itemCount - 1) {
+            outRect.left = l_size
+        }
         outRect.bottom = b_size
     }
 
