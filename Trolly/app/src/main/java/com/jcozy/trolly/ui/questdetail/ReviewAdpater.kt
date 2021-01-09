@@ -1,4 +1,4 @@
-package com.jcozy.trolly
+package com.jcozy.trolly.ui.questdetail
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.jcozy.trolly.R
 
 class ReviewAdapter(private val context : Context) : RecyclerView.Adapter<ReviewViewHolder>() {
     var datas = mutableListOf<ReviewData>()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder{
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_review,parent,false)
         return ReviewViewHolder(view)
     }

@@ -1,4 +1,3 @@
-package com.jcozy.trolly.main
 
 import android.view.View
 import android.widget.ImageView
