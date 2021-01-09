@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".main.MainActivity">
+    tools:context=".ui.main.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,8 +37,7 @@
             android:src="@drawable/icon_search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ic_stamp"
-            app:layout_constraintTop_toTopOf="parent"
-             />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageButton
             android:id="@+id/ic_stamp"
@@ -211,7 +210,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:spanCount="2"
-                tools:itemCount="2"
                 tools:listitem="@layout/item_main_sub"
                 />
 
@@ -234,7 +232,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="22dp"
                 android:paddingHorizontal="20dp"
-                android:paddingBottom="122dp"
+                android:paddingBottom="102dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <ImageView
@@ -243,7 +241,7 @@
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/img_photo_moon"
-                    app:layout_constraintDimensionRatio="320:170"
+                    app:layout_constraintDimensionRatio="320:226"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     />
@@ -315,14 +313,6 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.core.widget.NestedScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
