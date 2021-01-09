@@ -1,7 +1,6 @@
-package com.jcozy.trolly.timeattack
+package com.jcozy.trolly.ui.timeattack
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.jcozy.trolly.R
 import kotlinx.android.synthetic.main.activity_timeattack_parti.*

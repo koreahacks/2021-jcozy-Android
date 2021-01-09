@@ -7,7 +7,7 @@
     android:background="@color/black"
     android:paddingHorizontal="20dp"
     android:paddingTop="5dp"
-    tools:context=".ExplanationFragment">
+    tools:context=".ui.questdetail.ExplanationFragment">
 
     <TextView
         android:id="@+id/tv_intro1"

@@ -3,6 +3,11 @@
     package="com.jcozy.trolly">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+
 
     <application
         android:allowBackup="true"
@@ -11,13 +16,13 @@
         android:roundIcon="@mipmap/ic_trolly_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".timeattack.TimeAttackActivity">
+        <activity android:name="com.jcozy.trolly.ui.timeattack.TimeAttackActivity">
 
         </activity>
-        <activity android:name=".timeattack.TimeAttackPartiActivity"/>
-        <activity android:name=".QuestDetailActivity">
+        <activity android:name="com.jcozy.trolly.ui.timeattack.TimeAttackPartiActivity"/>
+        <activity android:name=".ui.questdetail.QuestDetailActivity">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.jcozy.trolly.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

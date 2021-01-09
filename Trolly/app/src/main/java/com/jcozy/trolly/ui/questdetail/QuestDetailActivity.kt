@@ -1,13 +1,19 @@
-package com.jcozy.trolly
+package com.jcozy.trolly.ui.questdetail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.provider.MediaStore
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
+import com.jcozy.trolly.CustomDialog
+import com.jcozy.trolly.R
 import kotlinx.android.synthetic.main.activity_quest_detail.*
 
 class QuestDetailActivity : AppCompatActivity() {
+
+    val IMAGE_FROM_GALLERY = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quest_detail)
@@ -24,7 +30,10 @@ class QuestDetailActivity : AppCompatActivity() {
 
         val bundle = Bundle()
         ExplanationFragment().arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.tab_viewpager, ExplanationFragment()).commit()
+        supportFragmentManager.beginTransaction().add(
+            R.id.tab_viewpager,
+            ExplanationFragment()
+        ).commit()
 
         tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {}
@@ -40,6 +49,23 @@ class QuestDetailActivity : AppCompatActivity() {
         })
 
         initView()
+
+
+        button_confirm.setOnClickListener {
+            val customDialog = CustomDialog(this)
+            customDialog.setOnOKClickedListener {
+                if(it){
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivity(intent)
+                }
+                else{
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                    startActivity(intent)
+                }
+            }
+            customDialog.start()
+        }
 
     }
 

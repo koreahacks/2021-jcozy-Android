@@ -1,4 +1,4 @@
-package com.jcozy.trolly.timeattack
+package com.jcozy.trolly.ui.timeattack
 
 import android.content.Context
 import android.view.LayoutInflater

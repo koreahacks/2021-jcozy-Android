@@ -1,11 +1,11 @@
-package com.jcozy.trolly
+package com.jcozy.trolly.ui.questdetail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_review.*
+import com.jcozy.trolly.R
 import kotlinx.android.synthetic.main.fragment_review.view.*
 
 class ReviewFragment : Fragment() {
@@ -25,7 +25,8 @@ class ReviewFragment : Fragment() {
     }
 
     fun intiView(view: View){
-        reviewAdapter = ReviewAdapter(view.context)
+        reviewAdapter =
+            ReviewAdapter(view.context)
         view.rv_review.adapter = reviewAdapter
         loadReviewDatas()
 
