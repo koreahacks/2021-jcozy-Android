@@ -9,4 +9,8 @@
     <color name="gray01">#757575</color>
     <color name="red01">#ff0000</color>
     <color name="hotpink">#fd0044</color>
+    <color name="hotpink2">#FF004E</color>
+    <color name="gradientpink">#FF0043</color>
+    <color name="gradientblue">#2737FF</color>
+    <color name="darkgray">#2F2F2F</color>
 </resources>
