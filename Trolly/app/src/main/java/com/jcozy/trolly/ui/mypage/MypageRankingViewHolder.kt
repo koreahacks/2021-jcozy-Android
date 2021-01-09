@@ -1,4 +1,4 @@
-package com.jcozy.trolly.mypage
+package com.jcozy.trolly.ui.mypage
 
 import android.view.View
 import android.widget.ImageView

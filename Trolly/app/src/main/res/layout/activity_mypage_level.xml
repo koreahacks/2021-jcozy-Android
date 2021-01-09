@@ -12,6 +12,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나의 레벨"
+        style="@style/content_text_title"
+        app:layout_constraintStart_toStartOf="@id/tb_mypage_level"
+        app:layout_constraintEnd_toEndOf="@id/tb_mypage_level"
+        app:layout_constraintTop_toTopOf="@id/tb_mypage_level"
+        app:layout_constraintBottom_toBottomOf="@id/tb_mypage_level"/>
+
+    <TextView
         android:id="@+id/tv_mylevel_username"
         style="@style/content_text_title"
         android:layout_width="wrap_content"

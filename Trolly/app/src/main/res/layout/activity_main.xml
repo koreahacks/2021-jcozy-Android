@@ -79,7 +79,7 @@
         android:fillViewport="true"
         android:overScrollMode="never"
         android:layout_marginTop="56dp"
-        android:paddingBottom="136dp"
+        android:paddingBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
@@ -236,7 +236,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="22dp"
                 android:paddingHorizontal="20dp"
-                android:paddingBottom="102dp"
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 
                 <ImageView
