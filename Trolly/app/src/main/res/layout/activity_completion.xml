@@ -9,6 +9,7 @@
     tools:context=".ui.questdetail.CompletionActivity">
 
     <ImageView
+        android:id="@+id/btn_x"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -59,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/tv_remain"
+        android:id="@+id/tv_rest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/gray_roundbox_14"

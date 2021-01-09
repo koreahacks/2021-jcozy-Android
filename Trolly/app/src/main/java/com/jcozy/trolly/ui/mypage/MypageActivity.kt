@@ -1,4 +1,4 @@
-package com.jcozy.trolly.mypage
+package com.jcozy.trolly.ui.mypage
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.jcozy.trolly.R
-import com.jcozy.trolly.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_mypage.*
 
 class MypageActivity : AppCompatActivity(), View.OnClickListener {
@@ -47,8 +46,6 @@ class MypageActivity : AppCompatActivity(), View.OnClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             android.R.id.home -> {
-                val intent = Intent(applicationContext, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 finish()
                 return true
             }

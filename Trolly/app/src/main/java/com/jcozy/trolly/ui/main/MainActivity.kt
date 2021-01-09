@@ -4,13 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.jcozy.trolly.ItemDecoration
 import com.jcozy.trolly.R
 import com.jcozy.trolly.StampDialog
-import com.jcozy.trolly.mypage.MypageActivity
+import com.jcozy.trolly.ui.mypage.MypageActivity
 import com.jcozy.trolly.network.responseData.MainMainData
 import com.jcozy.trolly.network.responseData.MainSubData
 import com.jcozy.trolly.network.responseData.MainTimeAttackData
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var mainTimeAttackAdapter : MainTimeAttackAdapter
     lateinit var mainmainAdapter : MainMainAdapter
     lateinit var mainSubAdapter : MainSubAdapter
-    lateinit var viewPager : ViewPager
 
 
     val data = mutableListOf<MainTimeAttackData>()
@@ -51,31 +49,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
 
-//        val compositePageTransformer = CompositePageTransformer()
-//        compositePageTransformer.addTransformer(MarginPageTransformer(10))
-//        compositePageTransformer.addTransformer { view, position ->
-//
-//            when {
-//                position <= -1.0F -> {
-//                    view.translationX = view.width * position
-//                    view.scaleX = 0.6f
-//                    view.scaleY = 0.6f
-//                    view.alpha = 0.4F
-//                }
-//                position > -1.0F && position < 0.0F -> {
-//                    view.translationX = view.width * -position
-//                    view.scaleX = 1.0f - (Math.abs(position) / 4)
-//                    view.scaleY = 1.0f - (Math.abs(position) / 4)
-//                    view.alpha = 1.0F - (Math.abs(position) / 2)
-//                }
-//                else -> {
-//                    view.scaleX = 1.0f
-//                    view.scaleY = 1.0f
-//                    view.alpha = 1.0F
-//                }
-//            }
-//        }
-//        main_time_rc.setPageTransformer(compositePageTransformer)
+        val compositePageTransformer = CompositePageTransformer()
+        compositePageTransformer.addTransformer(MarginPageTransformer(10))
+        compositePageTransformer.addTransformer { view, position ->
+
+            when {
+                position <= -1.0F -> {
+                    view.translationX = view.width * position
+                    view.scaleX = 0.6f
+                    view.scaleY = 0.6f
+                    view.alpha = 0.4F
+                }
+                position > -1.0F && position < 0.0F -> {
+                    view.translationX = view.width * -position
+                    view.scaleX = 1.0f - (Math.abs(position) / 4)
+                    view.scaleY = 1.0f - (Math.abs(position) / 4)
+                    view.alpha = 1.0F - (Math.abs(position) / 2)
+                }
+                else -> {
+                    view.scaleX = 1.0f
+                    view.scaleY = 1.0f
+                    view.alpha = 1.0F
+                }
+            }
+        }
+        main_time_rc.setPageTransformer(compositePageTransformer)
         main_main_rc.adapter = mainmainAdapter
         main_main_rc.addItemDecoration(
             ItemDecoration(
