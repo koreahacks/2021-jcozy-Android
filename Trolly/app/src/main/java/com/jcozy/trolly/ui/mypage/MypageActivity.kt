@@ -1,17 +1,30 @@
 package com.jcozy.trolly.ui.mypage
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.jcozy.trolly.R
+import com.jcozy.trolly.network.RequestToServer
+import com.jcozy.trolly.network.customEnqueue
 import kotlinx.android.synthetic.main.activity_mypage.*
 
 class MypageActivity : AppCompatActivity(), View.OnClickListener {
+
+    val service = RequestToServer.service
+    lateinit var sharedPref : SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage)
+
+        sharedPref = applicationContext!!.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
 
         setSupportActionBar(tb_mypage)
         supportActionBar!!.setDisplayShowCustomEnabled(true)
@@ -41,6 +54,27 @@ class MypageActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
         }
+    }
+
+    private fun loadMypage(){
+        val header = mutableMapOf<String, String?>()
+        header["Content-Type"] = "application/json"
+        header["token"] = sharedPref.getString("token", "token").toString()
+        service.requestMypage(header).customEnqueue(
+            onError = { Toast.makeText(this, "올바르지 않은 요청입니다.", Toast.LENGTH_SHORT)},
+            onSuccess = {
+                    tv_mypage_username.text = it.data[0].name
+                    Glide.with(applicationContext).load(it.data[0].profileImg).into(iv_mypage_userprofile)
+                    tv_mypage_mylevel.text = "LEVEL " +  it.data[0].level
+                    tv_mypage_myrank.text = "" + it.data[0].ranking + "위"
+            }
+        )
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        loadMypage()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -4,6 +4,7 @@ import com.bumptech.glide.annotation.GlideExtension
 import com.jcozy.trolly.network.responseData.ResponseMainMainData
 import com.jcozy.trolly.network.responseData.ResponseMainSubData
 import com.jcozy.trolly.network.responseData.ResponseMainTimeAttackData
+import com.jcozy.trolly.network.responseData.ResponseMypageData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.HeaderMap
@@ -23,6 +24,7 @@ interface RequestInterface{
     //퀘스트 실시간 인증
     // @GET("/quest/detail/time/{questIdx}")
     //fun requestTimeReview(@HeaderMap headers: Map<String, String?>,  @Path("questIdx") questIdx: Int): Call<>
+    //mypage 정보 가져오기
     @GET("/user/mypage")
     fun requestMypage(@HeaderMap headers: Map<String, String?>): Call<ResponseMypageData>
 }

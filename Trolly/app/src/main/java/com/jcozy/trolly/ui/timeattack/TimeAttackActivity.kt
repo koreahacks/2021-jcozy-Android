@@ -1,6 +1,8 @@
 package com.jcozy.trolly.ui.timeattack
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -11,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.jcozy.trolly.CustomDialog
 import com.jcozy.trolly.R
+import com.jcozy.trolly.network.RequestToServer
 import com.jcozy.trolly.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_time_attack.*
 import java.io.File
@@ -21,6 +24,9 @@ import java.util.concurrent.TimeUnit
 
 class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
+    val service = RequestToServer.service
+    lateinit var sharedPref : SharedPreferences
+
     val IMAGE_FROM_GALLERY = 0
     val IMAGE_FROM_CAMERA = 1
     lateinit var selectedImg : Uri
@@ -30,6 +36,7 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_attack)
 
+        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
 
         setSupportActionBar(tb_timeattack)
         supportActionBar!!.setDisplayShowCustomEnabled(true)

@@ -110,6 +110,7 @@
         app:layout_constraintTop_toTopOf="@id/tv_mypage_mylevel" />
 
     <TextView
+        android:id="@+id/tv_mypage_mylevel_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/mypage_detail_text"
