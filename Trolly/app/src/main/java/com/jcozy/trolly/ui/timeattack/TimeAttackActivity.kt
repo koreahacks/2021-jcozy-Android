@@ -71,6 +71,7 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
             override fun onFinish() {
                 tv_timer.text = "종료"
+                btn_timeattack_challenge.text = "기간 만료"
             }
         }
         countDownTimer.start()
