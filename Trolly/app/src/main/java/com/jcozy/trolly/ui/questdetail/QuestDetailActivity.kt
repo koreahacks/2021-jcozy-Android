@@ -29,6 +29,7 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.properties.Delegates
 
 
 class QuestDetailActivity : AppCompatActivity() {
@@ -59,8 +60,6 @@ class QuestDetailActivity : AppCompatActivity() {
         if(intent.hasExtra("questIdx")){
             questIdx = intent.getStringExtra("questIdx")
         }
-//        title = ""
-//        explanation = ""
         tablayout.addTab(tablayout.newTab().setText("설명"),0)
         tablayout.addTab(tablayout.newTab().setText("후기"),1)
 
@@ -69,9 +68,6 @@ class QuestDetailActivity : AppCompatActivity() {
         intro_title = "intro_title"
         explaination = "explaination"
         initView()
-
-        tablayout.addTab(tablayout.newTab().setText("설명"),0)
-        tablayout.addTab(tablayout.newTab().setText("후기"),1)
 
 
 
