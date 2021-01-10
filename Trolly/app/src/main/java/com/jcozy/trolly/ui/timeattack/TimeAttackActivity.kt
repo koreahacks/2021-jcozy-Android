@@ -18,12 +18,14 @@ import com.jcozy.trolly.network.RequestToServer
 import com.jcozy.trolly.network.customEnqueue
 import com.jcozy.trolly.network.responseData.MainTimeAttackData
 import com.jcozy.trolly.ui.main.MainActivity
+import com.jcozy.trolly.ui.main.MainTimeAttackAdapter
 import kotlinx.android.synthetic.main.activity_time_attack.*
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.properties.Delegates
 
 class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -36,12 +38,15 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
     val IMAGE_FROM_CAMERA = 1
     lateinit var selectedImg : Uri
     lateinit var imageFilePath: String
+    var questIdx by Delegates.notNull<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_attack)
 
         sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
+
 
 
         setSupportActionBar(tb_timeattack)
@@ -53,6 +58,7 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
         tb_timeattack.elevation = 5F
         view_realtime_participants.setOnClickListener(this)
+
 
 
         //서버에서 보내주는 카운트다운
@@ -70,6 +76,7 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         countDownTimer.start()
 
 
+        loadTAData()
 
     }
 
@@ -77,7 +84,8 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         val header = mutableMapOf<String, String>()
         header["Content-Type"] = "application/json"
         header["TOKEN"] = sharedPref.getString("token", "token").toString()
-        service.requestTADetail(header, ).customEnqueue(
+
+        service.requestTADetail(header, questIdx).customEnqueue(
             onError = {},
             onSuccess = {
                 tv_timeattack_title.text = it.data.title

@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         mainTimeAttackAdapter = MainTimeAttackAdapter(this){ MainTimeAttackData, View ->
             val intent = Intent(this, TimeAttackActivity::class.java)
             startActivity(intent)
+
         }
         sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
         editor = sharedPref.edit()
@@ -195,7 +196,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if(it.message == "광고 조회 실패") {
                     layout_adv.visibility = View.GONE
                 }
-                else{
+                if(it.success){
                     myData = it.data.elementAt(0)
                     Glide.with(this).load(myData.image).into(main_sub_img)
                     tv_main_sub_cate.text = myData.title
