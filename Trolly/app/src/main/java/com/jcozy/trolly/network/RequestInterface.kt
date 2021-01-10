@@ -8,9 +8,7 @@ import com.jcozy.trolly.network.responseData.ResponseMainTimeAttackData
 import com.jcozy.trolly.network.responseData.*
 import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.HeaderMap
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface RequestInterface{
 

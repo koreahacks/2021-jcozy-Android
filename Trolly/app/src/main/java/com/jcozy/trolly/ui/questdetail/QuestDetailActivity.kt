@@ -168,7 +168,6 @@ class QuestDetailActivity : AppCompatActivity() {
                 explaination = it.data.description
             }
         )
-        Log.d("안2",title)
     }
 
     @Throws(IOException::class)
