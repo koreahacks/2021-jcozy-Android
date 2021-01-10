@@ -43,6 +43,7 @@ class QuestDetailActivity : AppCompatActivity() {
     lateinit var intro_title : String
     lateinit var explaination : String
     val bundle = Bundle()
+    var questIdx by Delegates.notNull<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +55,14 @@ class QuestDetailActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)   // 뒤로가기 버튼
         toolbar.elevation = 0F
+
+        if(intent.hasExtra("questIdx")){
+            questIdx = intent.getStringExtra("questIdx")
+        }
+//        title = ""
+//        explanation = ""
+        tablayout.addTab(tablayout.newTab().setText("설명"),0)
+        tablayout.addTab(tablayout.newTab().setText("후기"),1)
 
         sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
         editor = sharedPref.edit()
@@ -156,9 +165,10 @@ class QuestDetailActivity : AppCompatActivity() {
     private fun initView(){
         val header = mutableMapOf<String, String>()
         header["Content-Type"] = "application/json"
-        header["TOKEN"] = sharedPref.getString("token", "token").toString()
-        service.requestQuestDetail(header, "5ff92d4edec2631b41afff52").customEnqueue(
-            onError = {Toast.makeText(this,"올바르지 않은 요청입니다.",Toast.LENGTH_SHORT)},
+        val token = sharedPref.getString("token","token").toString()
+        header["TOKEN"] = token
+        service.requestQuestDetail(header,questIdx).customEnqueue(
+            onError = { Toast.makeText(this, "올바르지 않은 요청입니다.", Toast.LENGTH_SHORT) },
             onSuccess = {
                 Log.d("뭔데",it.message)
                 tv_title.text = it.data.title

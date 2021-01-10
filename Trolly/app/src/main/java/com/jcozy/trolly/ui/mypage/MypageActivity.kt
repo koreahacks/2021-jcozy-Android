@@ -81,8 +81,6 @@ class MypageActivity : AppCompatActivity(), View.OnClickListener {
                     tv_mypage_myrank.text = "" + it.data.ranking + "위"
                     if(it.data.ranking == 1){
                         tv_ranking_explain.text = "누구도 넘 볼 수 없는 거대한 벽이군요!"
-                    }else{
-                        tv_ranking_explain.text = "랭킹 1위가 되는 그 날까지"
                     }
             },onFail = {
                 Log.e("TEST_HERE", "안 된다!!!!!")
