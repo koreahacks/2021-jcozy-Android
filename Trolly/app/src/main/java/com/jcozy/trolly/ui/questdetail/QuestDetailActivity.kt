@@ -146,10 +146,10 @@ class QuestDetailActivity : AppCompatActivity() {
                 Glide.with(this).load(it.data.image).into(iv_main)
                 title = it.data.title
                 explanation = it.data.description
-                Log.d("안",title)
+//                Log.d("안",title)
             }
         )
-        Log.d("안2",title)
+//        Log.d("안2",title)
     }
 
     @Throws(IOException::class)

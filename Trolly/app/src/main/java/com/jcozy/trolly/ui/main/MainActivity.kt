@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         mainTimeAttackAdapter = MainTimeAttackAdapter(this){ MainTimeAttackData, View ->
             val intent = Intent(this, TimeAttackActivity::class.java)
+            intent.putExtra("questIdx", MainTimeAttackData._id)
             startActivity(intent)
         }
         sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)

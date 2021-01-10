@@ -24,6 +24,7 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.properties.Delegates
 
 class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -31,6 +32,7 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var sharedPref : SharedPreferences
     var data = mutableListOf<MainTimeAttackData>()
     var endTime : String = ""
+    var questIdx by Delegates.notNull<String>()
 
     val IMAGE_FROM_GALLERY = 0
     val IMAGE_FROM_CAMERA = 1
@@ -40,9 +42,6 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_attack)
-
-        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
-
 
         setSupportActionBar(tb_timeattack)
         supportActionBar!!.setDisplayShowCustomEnabled(true)
@@ -54,12 +53,19 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         tb_timeattack.elevation = 5F
         view_realtime_participants.setOnClickListener(this)
 
+        if(intent.hasExtra("questIdx")){
+            questIdx = intent.getStringExtra("questIdx")
+        }
+        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
 
+        loadTAData()
         //서버에서 보내주는 카운트다운
         val leftSeconds = (time_left() * 1000).toLong()
 
+
         val countDownTimer = object : CountDownTimer(leftSeconds, 1000){
             override fun onTick(p0: Long) {
+                tv_timer.text = getTime()
                 tv_timer.text = getTime()
             }
 
@@ -70,14 +76,13 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         countDownTimer.start()
 
 
-
     }
 
     fun loadTAData(){
         val header = mutableMapOf<String, String>()
         header["Content-Type"] = "application/json"
         header["TOKEN"] = sharedPref.getString("token", "token").toString()
-        service.requestTADetail(header, ).customEnqueue(
+        service.requestTADetail(header, questIdx).customEnqueue(
             onError = {},
             onSuccess = {
                 tv_timeattack_title.text = it.data.title
@@ -87,7 +92,6 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
                 Glide.with(applicationContext).load(it.data.image).into(iv_timeattack)
                 endTime = it.data.end
                 tv_howmany_tried.text = "" + it.data.participant + "명 참여"
-
             }
         )
     }
@@ -137,7 +141,10 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
             /*서버에서 종료시간 받아오기.*/
 //        val test_time = "2021-01-10T20:00:00.000Z"
-            val test_time = "2021-01-10T07:24:30.000Z"
+            var test_time = endTime//"2021-01-10T07:24:30.000Z"
+            if(endTime.length == 0){
+                test_time = "2021-01-10T19:00:00.000Z"
+            }
             val test_end_hour = test_time.substring(11,13).toInt()
             val test_end_min = test_time.substring(14,16).toInt()
             val test_end_sec = test_time.substring(17,19).toInt()
