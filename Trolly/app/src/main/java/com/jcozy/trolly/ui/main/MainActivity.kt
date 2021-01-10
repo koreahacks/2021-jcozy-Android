@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         ic_stamp.setOnClickListener {
             val stampDialog = StampDialog(this)
-            stampDialog.start("몽블리", 2, 1, 3)
+            stampDialog.start("밍트롤", 2, 2, 2)
         }
 
     }

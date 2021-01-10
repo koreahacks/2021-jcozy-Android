@@ -246,7 +246,7 @@
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/img_photo_moon"
-                    app:layout_constraintDimensionRatio="320:226"
+                    app:layout_constraintDimensionRatio="320:250"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     />
