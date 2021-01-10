@@ -1,14 +1,16 @@
 package com.jcozy.trolly.network.responseData
 
+
 data class ResponseMypageRankingData(
     val status: Int,
     val success: Boolean,
     val message: String,
-    val data: List<RankingData>
+    val data: List<TotalData>
 )
 
-data class RankingData(
-    val profile : String,
+
+data class TotalData(
+
     val name : String,
-    val ranking : Int
+    val profileImg : String
 )

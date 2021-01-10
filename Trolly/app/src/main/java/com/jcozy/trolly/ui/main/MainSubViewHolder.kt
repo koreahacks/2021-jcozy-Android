@@ -18,6 +18,7 @@ class MainSubViewHolder(itemView: View, val itemClick:(MainSubData, View) -> Uni
     var name : TextView = itemView.findViewById(R.id.tv_sub_title)
     var level : TextView = itemView.findViewById(R.id.tv_sub_lv)
     var people : TextView = itemView.findViewById(R.id.tv_sub_people)
+    var lv_img : ImageView = itemView.findViewById(R.id.img_sub_lv)
 
     fun bind(myData : MainSubData){
         id = myData._id
@@ -25,6 +26,15 @@ class MainSubViewHolder(itemView: View, val itemClick:(MainSubData, View) -> Uni
         name.text = myData.title
         level.text = "Lv. " + myData.level.toString()
         people.text = myData.participant.toString() + "명 참여"
+        if(myData.level == 1){
+            lv_img.setImageResource(R.drawable.icon_level1)
+        }
+        else if(myData.level == 2){
+            lv_img.setImageResource(R.drawable.icon_level2)
+        }
+        else{
+            lv_img.setImageResource(R.drawable.icon_level3)
+        }
         itemView.setOnClickListener { itemClick(myData, itemView) }
     }
 

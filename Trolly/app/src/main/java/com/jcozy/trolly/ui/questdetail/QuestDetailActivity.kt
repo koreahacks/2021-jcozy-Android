@@ -160,6 +160,7 @@ class QuestDetailActivity : AppCompatActivity() {
         service.requestQuestDetail(header, "5ff92d4edec2631b41afff52").customEnqueue(
             onError = {Toast.makeText(this,"올바르지 않은 요청입니다.",Toast.LENGTH_SHORT)},
             onSuccess = {
+                Log.d("뭔데",it.message)
                 tv_title.text = it.data.title
                 tv_way.text = it.data.how_to
                 Glide.with(this).load(it.data.image).into(iv_main)
@@ -167,6 +168,7 @@ class QuestDetailActivity : AppCompatActivity() {
                 explaination = it.data.description
             }
         )
+        Log.d("안2",title)
     }
 
     @Throws(IOException::class)

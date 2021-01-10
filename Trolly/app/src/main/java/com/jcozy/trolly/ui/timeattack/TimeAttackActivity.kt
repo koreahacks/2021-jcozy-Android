@@ -1,6 +1,8 @@
 package com.jcozy.trolly.ui.timeattack
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -9,26 +11,42 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.bumptech.glide.Glide
 import com.jcozy.trolly.CustomDialog
 import com.jcozy.trolly.R
+import com.jcozy.trolly.network.RequestToServer
+import com.jcozy.trolly.network.customEnqueue
+import com.jcozy.trolly.network.responseData.MainTimeAttackData
 import com.jcozy.trolly.ui.main.MainActivity
+import com.jcozy.trolly.ui.main.MainTimeAttackAdapter
 import kotlinx.android.synthetic.main.activity_time_attack.*
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.properties.Delegates
 
 class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
+
+    val service = RequestToServer.service
+    lateinit var sharedPref : SharedPreferences
+    var data = mutableListOf<MainTimeAttackData>()
+    var endTime : String = ""
 
     val IMAGE_FROM_GALLERY = 0
     val IMAGE_FROM_CAMERA = 1
     lateinit var selectedImg : Uri
     lateinit var imageFilePath: String
+    var questIdx by Delegates.notNull<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_attack)
+
+        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
+
 
 
         setSupportActionBar(tb_timeattack)
@@ -40,6 +58,7 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
         tb_timeattack.elevation = 5F
         view_realtime_participants.setOnClickListener(this)
+
 
 
         //서버에서 보내주는 카운트다운
@@ -57,7 +76,28 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         countDownTimer.start()
 
 
+        loadTAData()
 
+    }
+
+    fun loadTAData(){
+        val header = mutableMapOf<String, String>()
+        header["Content-Type"] = "application/json"
+        header["TOKEN"] = sharedPref.getString("token", "token").toString()
+
+        service.requestTADetail(header, questIdx).customEnqueue(
+            onError = {},
+            onSuccess = {
+                tv_timeattack_title.text = it.data.title
+                tv_howto_detail.text = it.data.how_to
+                tv_explain_head2.text = it.data.sub_title
+                tv_explain_detail.text = it.data.description
+                Glide.with(applicationContext).load(it.data.image).into(iv_timeattack)
+                endTime = it.data.end
+                tv_howmany_tried.text = "" + it.data.participant + "명 참여"
+
+            }
+        )
     }
 
     override fun onClick(p0: View?) {

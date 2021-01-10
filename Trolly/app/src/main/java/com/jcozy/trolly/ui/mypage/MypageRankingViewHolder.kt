@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jcozy.trolly.R
-import com.jcozy.trolly.network.responseData.RankingData
+import com.jcozy.trolly.network.responseData.TotalData
 
 class MypageRankingViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -14,10 +14,10 @@ class MypageRankingViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     var name : TextView = itemView.findViewById(R.id.tv_ranking_username)
     var ranking : TextView = itemView.findViewById(R.id.tv_ranking)
 
-    fun bind(myData : RankingData){
-        Glide.with(itemView).load(myData.profile).into(profile)
+    fun bind(myData : TotalData){
+        Glide.with(itemView).load(myData.profileImg).into(profile)
         name.text = myData.name
-        ranking.text = myData.ranking.toString()
+
     }
 
 }

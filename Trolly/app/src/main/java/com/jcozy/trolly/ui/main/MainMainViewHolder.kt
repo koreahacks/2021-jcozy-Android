@@ -21,6 +21,7 @@ class MainMainViewHolder(itemView: View, val itemClick:(MainMainData, View) -> U
 
     var red : ImageView = itemView.findViewById(R.id.ic_completed_red)
     var background : ImageView = itemView.findViewById(R.id.completed)
+    var lv_img : ImageView = itemView.findViewById(R.id.img_main_lv)
 
     fun bind(myData : MainMainData){
         id = myData._id
@@ -35,6 +36,16 @@ class MainMainViewHolder(itemView: View, val itemClick:(MainMainData, View) -> U
         Glide.with(itemView).load(myData.image).into(image)
         title.text = myData.title
         level.text = "Lv. " + myData.level.toString()
+        if(myData.level == 1){
+            lv_img.setImageResource(R.drawable.icon_level1)
+        }
+        else if(myData.level == 2){
+            lv_img.setImageResource(R.drawable.icon_level2)
+        }
+        else{
+            lv_img.setImageResource(R.drawable.icon_level3)
+        }
+
         participant.text = myData.participant.toString() + "명 참여"
 
         itemView.setOnClickListener { itemClick(myData, itemView) }

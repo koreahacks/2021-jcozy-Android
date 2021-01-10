@@ -1,14 +1,20 @@
 package com.jcozy.trolly.ui.timeattack
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.jcozy.trolly.R
+import com.jcozy.trolly.network.RequestToServer
 import com.jcozy.trolly.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_timeattack_parti.*
 
 class TimeAttackPartiActivity : AppCompatActivity() {
+
+    val service = RequestToServer.service
+    lateinit var sharedPref : SharedPreferences
 
     private lateinit var tapAdapter: TimeAttackPartiAdapter
     private val tapData = mutableListOf<TimeAttackPartiData>()
@@ -22,6 +28,8 @@ class TimeAttackPartiActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.icon_before)
+
+        sharedPref = applicationContext!!.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
 
         initData()
     }
