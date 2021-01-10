@@ -2,7 +2,6 @@ package com.jcozy.trolly.network.responseData
 
 
 data class ResponseQuestDetailData(
-
     val status: Int,
     val success: Boolean,
     val message: String,

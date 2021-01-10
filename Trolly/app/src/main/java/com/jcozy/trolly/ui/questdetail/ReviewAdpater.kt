@@ -8,9 +8,10 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jcozy.trolly.R
+import com.jcozy.trolly.network.responseData.QuestDetailReviewData
 
 class ReviewAdapter(private val context : Context) : RecyclerView.Adapter<ReviewViewHolder>() {
-    var datas = mutableListOf<ReviewData>()
+    var datas = mutableListOf<QuestDetailReviewData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_review,parent,false)
         return ReviewViewHolder(view)
@@ -29,7 +30,7 @@ class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var mainImg : ImageView = itemView.findViewById(R.id.iv_review_pic)
 
-    fun bind(myData: ReviewData){
-        Glide.with(itemView).load(myData.img).into(mainImg)
+    fun bind(myData: QuestDetailReviewData){
+        Glide.with(itemView).load(myData.img_url).into(mainImg)
     }
 }

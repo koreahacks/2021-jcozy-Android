@@ -1,17 +1,30 @@
 package com.jcozy.trolly.ui.questdetail
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.jcozy.trolly.R
+import com.jcozy.trolly.network.RequestToServer
+import com.jcozy.trolly.network.customEnqueue
+import com.jcozy.trolly.network.responseData.MainTimeAttackData
+import com.jcozy.trolly.network.responseData.QuestDetailReviewData
 import kotlinx.android.synthetic.main.fragment_review.view.*
 
 class ReviewFragment : Fragment() {
 
+    val service = RequestToServer.service
+    lateinit var sharedPref: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
+
+    val data = mutableListOf<QuestDetailReviewData>()
+
     private lateinit var reviewAdapter: ReviewAdapter
-    private val reviewData = mutableListOf<ReviewData>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,6 +32,9 @@ class ReviewFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_review, container, false)
+
+        sharedPref = context!!.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
+        editor = sharedPref.edit()
 
         intiView(view)
         return view
@@ -33,14 +49,22 @@ class ReviewFragment : Fragment() {
     }
 
     private fun loadReviewDatas() {
-        reviewData.apply {
-            add (ReviewData(img = "https://images.unsplash.com/photo-1570515137767-8ac25a5b10fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1821&q=80"))
-            add (ReviewData(img = "https://images.unsplash.com/photo-1571645639045-a3d43f4cafc5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=658&q=80"))
-            add (ReviewData(img = "https://images.unsplash.com/photo-1595737335975-2160c924caf2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"))
-            add (ReviewData(img = "https://images.unsplash.com/photo-1599025847646-58d2a1808824?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80"))
-            add (ReviewData(img = "https://images.unsplash.com/photo-1562601579-599dec564e06?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"))
-        }
-        reviewAdapter.datas = reviewData
+
+        val header = mutableMapOf<String, String>()
+        header["Content-Type"] = "application/json"
+        header["TOKEN"] = sharedPref.getString("token", "token").toString()
+        service.requestQuestDetailReview(header, "5ff92d4edec2631b41afff52").customEnqueue(
+            onError = { Toast.makeText(context!!,"올바르지 않은 요청입니다.", Toast.LENGTH_SHORT)},
+            onSuccess = {
+                Log.d("모야?",it.message)
+                Log.d("모야?2",it.data.toString())
+                data.clear()
+                data.addAll(it.data)
+                reviewAdapter.datas = data
+                reviewAdapter.notifyDataSetChanged()
+            }
+        )
+        reviewAdapter.datas = data
         reviewAdapter.notifyDataSetChanged()
     }
 }

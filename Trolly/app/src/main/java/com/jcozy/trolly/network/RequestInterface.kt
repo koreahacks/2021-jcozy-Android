@@ -1,11 +1,9 @@
 package com.jcozy.trolly.network
 
-import com.bumptech.glide.annotation.GlideExtension
 import com.jcozy.trolly.network.responseData.*
+import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.HeaderMap
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface RequestInterface{
 
@@ -22,6 +20,9 @@ interface RequestInterface{
     @GET("/quest/detail/{questIdx}")
     fun requestQuestDetail(@HeaderMap headers: Map<String, String?>, @Path("questIdx") questIdx: String): Call<ResponseQuestDetailData>
     //퀘스트 후기 사진
-    @GET("/quest/images/{questIdx}")
+    @GET("/quest/detail/images/{questIdx}")
     fun requestQuestDetailReview(@HeaderMap headers: Map<String, String?>, @Path("questIdx") questIdx: String): Call<ResponseQuestDetailReviewData>
+    //퀘스트 후기 사진 업로드
+    @POST("/quest/upload/{questIdx}")
+    fun requestQuestDetailReviewUpload(@HeaderMap headers: Map<String, String?>, @Body body: MultipartBody.Part, @Path("questIdx") questIdx: String): Call<ResponseQuestDetailReviewUploadData>
 }

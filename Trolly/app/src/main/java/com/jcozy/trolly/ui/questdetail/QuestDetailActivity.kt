@@ -40,8 +40,7 @@ class QuestDetailActivity : AppCompatActivity() {
     val service = RequestToServer.service
     lateinit var sharedPref: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
-    lateinit var QuestDetailData : QuestDetailData
-    lateinit var title : String
+    lateinit var intro_title : String
     lateinit var explaination : String
     val bundle = Bundle()
 
@@ -56,17 +55,18 @@ class QuestDetailActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)   // 뒤로가기 버튼
         toolbar.elevation = 0F
 
+        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
+        editor = sharedPref.edit()
+        intro_title = "intro_title"
+        explaination = "explaination"
+        initView()
+
         tablayout.addTab(tablayout.newTab().setText("설명"),0)
         tablayout.addTab(tablayout.newTab().setText("후기"),1)
 
-        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
-        editor = sharedPref.edit()
-        initView()
 
-        bundle.putString("title", title)
-        bundle.putString("how_to", explaination)
-        ExplanationFragment().arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.tab_viewpager, ExplanationFragment()).commit()
+
+
 
         tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {}
@@ -128,27 +128,45 @@ class QuestDetailActivity : AppCompatActivity() {
             }
             customDialog.start()
         }
-        Log.d("밖", title)
+        Log.d("제발??", intro_title)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(">>>>스타트", intro_title)
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(">>>>>리쥼", intro_title)
+        bundle.putString("intro_title", intro_title)
+        bundle.putString("explaination", explaination)
+        ExplanationFragment().arguments = bundle
+        supportFragmentManager.beginTransaction().add(R.id.tab_viewpager, ExplanationFragment()).commit()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(">>>>리스", intro_title)
+
     }
 
     private fun initView(){
         val header = mutableMapOf<String, String>()
         header["Content-Type"] = "application/json"
-        val token = sharedPref.getString("token","token").toString()
-        header["TOKEN"] = token
-        service.requestQuestDetail(header,"5ff931e1a1c0110964b74d7c").customEnqueue(
-            onError = { Toast.makeText(this, "올바르지 않은 요청입니다.", Toast.LENGTH_SHORT) },
+        header["TOKEN"] = sharedPref.getString("token", "token").toString()
+        service.requestQuestDetail(header, "5ff92d4edec2631b41afff52").customEnqueue(
+            onError = {Toast.makeText(this,"올바르지 않은 요청입니다.",Toast.LENGTH_SHORT)},
             onSuccess = {
-                Log.d("뭔데",it.message)
                 tv_title.text = it.data.title
                 tv_way.text = it.data.how_to
                 Glide.with(this).load(it.data.image).into(iv_main)
-                title = it.data.title
+                intro_title = it.data.sub_title
                 explaination = it.data.description
-                Log.d("안",title)
             }
         )
-        Log.d("안2",title)
     }
 
     @Throws(IOException::class)

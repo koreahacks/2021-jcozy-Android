@@ -88,6 +88,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="68dp"
                 android:layout_marginTop="10dp"
+                android:lines="2"
                 app:layout_constraintTop_toBottomOf="@+id/tv_way_title"
                 android:text="나의 손과 함께 나온 달사진을 찍고 사진을 시간안에 업로드해 인증해주세요." />
 
