@@ -166,6 +166,7 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/icon_next"
                 android:drawablePadding="4dp"
+                android:visibility="gone"
                 android:fontFamily="@font/spoqahansansneo_light"
                 android:text="더보기"
                 android:textColor="@color/white"

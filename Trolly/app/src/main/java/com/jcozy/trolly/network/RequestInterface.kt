@@ -32,7 +32,7 @@ interface RequestInterface{
     @GET("/quest/detail/{questIdx}")
     fun requestQuestDetail(@HeaderMap headers: Map<String, String?>, @Path("questIdx") questIdx: String): Call<ResponseQuestDetailData>
     //타임어택 세부 페이지
-    @GET("/quest/detail/{questidx)")
+    @GET("/quest/detail/{questIdx}")
     fun requestTADetail(@HeaderMap headers: Map<String, String?>, @Path("questIdx") questIdx: String): Call<ResponseTADetailData>
 
     //퀘스트 후기 사진

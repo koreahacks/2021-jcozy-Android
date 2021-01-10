@@ -18,7 +18,6 @@ import com.jcozy.trolly.network.RequestToServer
 import com.jcozy.trolly.network.customEnqueue
 import com.jcozy.trolly.network.responseData.MainTimeAttackData
 import com.jcozy.trolly.ui.main.MainActivity
-import com.jcozy.trolly.ui.main.MainTimeAttackAdapter
 import kotlinx.android.synthetic.main.activity_time_attack.*
 import java.io.File
 import java.io.IOException
@@ -33,21 +32,16 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var sharedPref : SharedPreferences
     var data = mutableListOf<MainTimeAttackData>()
     var endTime : String = ""
+    var questIdx by Delegates.notNull<String>()
 
     val IMAGE_FROM_GALLERY = 0
     val IMAGE_FROM_CAMERA = 1
     lateinit var selectedImg : Uri
     lateinit var imageFilePath: String
-    var questIdx by Delegates.notNull<String>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_attack)
-
-        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
-
-
 
         setSupportActionBar(tb_timeattack)
         supportActionBar!!.setDisplayShowCustomEnabled(true)
@@ -59,24 +53,29 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         tb_timeattack.elevation = 5F
         view_realtime_participants.setOnClickListener(this)
 
+        if(intent.hasExtra("questIdx")){
+            questIdx = intent.getStringExtra("questIdx")
+        }
+        sharedPref = this.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
 
-
+        loadTAData()
         //서버에서 보내주는 카운트다운
         val leftSeconds = (time_left() * 1000).toLong()
 
+
         val countDownTimer = object : CountDownTimer(leftSeconds, 1000){
             override fun onTick(p0: Long) {
+                tv_timer.text = getTime()
                 tv_timer.text = getTime()
             }
 
             override fun onFinish() {
                 tv_timer.text = "종료"
+                btn_timeattack_challenge.text = "기간 만료"
             }
         }
         countDownTimer.start()
 
-
-        loadTAData()
 
     }
 
@@ -84,7 +83,6 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
         val header = mutableMapOf<String, String>()
         header["Content-Type"] = "application/json"
         header["TOKEN"] = sharedPref.getString("token", "token").toString()
-
         service.requestTADetail(header, questIdx).customEnqueue(
             onError = {},
             onSuccess = {
@@ -95,7 +93,6 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
                 Glide.with(applicationContext).load(it.data.image).into(iv_timeattack)
                 endTime = it.data.end
                 tv_howmany_tried.text = "" + it.data.participant + "명 참여"
-
             }
         )
     }
@@ -145,7 +142,10 @@ class TimeAttackActivity : AppCompatActivity(), View.OnClickListener {
 
             /*서버에서 종료시간 받아오기.*/
 //        val test_time = "2021-01-10T20:00:00.000Z"
-            val test_time = "2021-01-10T07:24:30.000Z"
+            var test_time = endTime//"2021-01-10T07:24:30.000Z"
+            if(endTime.length == 0){
+                test_time = "2021-01-10T19:00:00.000Z"
+            }
             val test_end_hour = test_time.substring(11,13).toInt()
             val test_end_min = test_time.substring(14,16).toInt()
             val test_end_sec = test_time.substring(17,19).toInt()
