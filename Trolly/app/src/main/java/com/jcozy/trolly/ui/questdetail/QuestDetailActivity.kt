@@ -28,6 +28,7 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.properties.Delegates
 
 
 class QuestDetailActivity : AppCompatActivity() {
@@ -43,6 +44,7 @@ class QuestDetailActivity : AppCompatActivity() {
     lateinit var title : String
     lateinit var explanation : String
     val bundle = Bundle()
+    var questIdx by Delegates.notNull<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +57,9 @@ class QuestDetailActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)   // 뒤로가기 버튼
         toolbar.elevation = 0F
 
+        if(intent.hasExtra("questIdx")){
+            questIdx = intent.getStringExtra("questIdx")
+        }
 //        title = ""
 //        explanation = ""
         tablayout.addTab(tablayout.newTab().setText("설명"),0)
@@ -137,7 +142,7 @@ class QuestDetailActivity : AppCompatActivity() {
         header["Content-Type"] = "application/json"
         val token = sharedPref.getString("token","token").toString()
         header["TOKEN"] = token
-        service.requestQuestDetail(header,"5ff931e1a1c0110964b74d7c").customEnqueue(
+        service.requestQuestDetail(header,questIdx).customEnqueue(
             onError = { Toast.makeText(this, "올바르지 않은 요청입니다.", Toast.LENGTH_SHORT) },
             onSuccess = {
                 Log.d("뭔데",it.message)
