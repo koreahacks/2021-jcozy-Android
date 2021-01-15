@@ -29,13 +29,13 @@ MZ세대 롤코족의 주류인 대학생들을 위해 트렌드를 다양한 �
 <img src="https://user-images.githubusercontent.com/49268117/104592031-ee77e600-56b0-11eb-9129-e6ffaef4d8a7.png" width="1000" />
 </p>
 
-### 2. 퀘스트 세부 페이지
+### 2. 타임어택
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/49268117/104592046-f3d53080-56b0-11eb-9044-af88411d5378.png" width="1000" />
 </p>
 
-### 3. 스탬프
+### 3. 스탬프 및 퀘스트 세부 페이지
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/49268117/104592050-f6378a80-56b0-11eb-8982-0220a7522f9c.png" width="1000" />
